@@ -2,8 +2,7 @@ package misis.payment
 
 import misis.payment.model.{CreateAcc, CreateCashback, GetAcc, MoneyOrder, TakeoutMoney, TopupAcc}
 import misis.payment.repository.AccCbRepositoryInMemory
-
-import java.util.UUID
+import io.circe._, io.circe.generic.auto._, io.circe.parser._, io.circe.syntax._
 
 object PayApp extends App {
   val repository = new AccCbRepositoryInMemory
@@ -39,7 +38,12 @@ object PayApp extends App {
   val id_cw = repository.getAcc(GetAcc(cw.number))
   repository.topupAcc(TopupAcc(id_cw.head, 6000))
   val id_ss = repository.getAcc(GetAcc(ss.number))
-  repository.moneyOrder(MoneyOrder(id_cw.head, id_ss.head, Option("regional"), 3000))
+  repository.moneyOrder(MoneyOrder(id_cw.head, id_ss.head, None, 3000))
 
   println(repository.list().filterNot(obj => obj.owner == lvt2.owner))
+
+  private val list = repository.list()
+  val result = list.asJson.spaces2 // максимально компактный json
+  println()
+  println(result)
 }

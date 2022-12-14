@@ -28,7 +28,7 @@ class AccCbRepositoryInMemory extends AccCbRepository {
   }
 
   override def getPercent(opt: String): Int = {
-    types.get(opt).get.percent
+    types(opt).percent
   }
 
   // операции со счетами
@@ -43,6 +43,8 @@ class AccCbRepositoryInMemory extends AccCbRepository {
     account
   }
 
+
+  override def get(acc: UUID): Account = bank(acc)
 
   override def getAcc(acc: GetAcc): List[UUID] = {
     val l = list()
@@ -77,16 +79,18 @@ class AccCbRepositoryInMemory extends AccCbRepository {
   }
 
   override def moneyOrder(operation: MoneyOrder): Option[Unit] = {
+    val cashb = operation.cat.get
     // 1 шаг - снятие денег с первого счета, если они вообще есть
     bank.get(operation.from_id).map { account =>
       if ((account.volume - operation.summa) < 0) throw new Error("Недостаточно средств для выполнения операции. Пополните счет.")
       else {
         val new_vol = account.volume - operation.summa
-        if (operation.cat.isDefined) {
-          val newest_vol = new_vol + round(operation.summa * getPercent(operation.cat.get) / 100)
+        if (cashb != "0") {
+          val newest_vol = new_vol + round(operation.summa * getPercent(cashb) / 100)
           val updated = account.copy(volume = newest_vol)
           bank.put(account.id, updated)
-          println(s"Отправителю было начислено ${round(operation.summa * getPercent(operation.cat.get) / 100)} тугриков кэшбеком.")
+          val perc = round(operation.summa * getPercent(cashb) / 100)
+//          println(s"Отправителю было начислено ${round(operation.summa * getPercent(cashb) / 100)} тугриков кэшбеком.")
         }
         else {
           val updated = account.copy(volume = new_vol)

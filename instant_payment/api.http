@@ -1,0 +1,112 @@
+// создание новых счетов
+POST http://localhost:8080/account
+Content-Type: application/json
+
+{"owner": "Lars von Trier", "number": "+7(911)111-11-11","volume": 100000}
+
+###
+POST http://localhost:8080/account
+Content-Type: application/json
+
+{"owner": "Lars von Trier", "number": "+7(911)111-11-11","volume": 50000}
+
+###
+POST http://localhost:8080/account
+Content-Type: application/json
+
+{"owner": "Lars von Trier", "number": "+7(911)111-11-11","volume": 25000}
+
+###
+POST http://localhost:8080/account
+Content-Type: application/json
+
+{"owner": "Christoph Waltz", "number": "+7(922)222-22-22","volume": 20000}
+
+###
+POST http://localhost:8080/account
+Content-Type: application/json
+
+{"owner": "Stellan Skarsgard", "number": "+7(933)333-33-33","volume": 20000}
+
+###
+POST http://localhost:8080/account
+Content-Type: application/json
+
+{"owner": "Mads Mikkelsen", "number": "+7(944)444-44-44","volume": 1000000}
+
+###
+// создание новых типов кэшбека
+POST http://localhost:8080/cashback
+Content-Type: application/json
+
+{"cat": "regional", "perc": 10}
+
+###
+POST http://localhost:8080/cashback
+Content-Type: application/json
+
+{"cat": "national", "perc": 20}
+
+###
+POST http://localhost:8080/cashback
+Content-Type: application/json
+
+{"cat": "VIP", "perc": 21}
+
+###
+// Просмотр всех счетов
+GET http://localhost:8080/accounts
+
+###
+// Просмотр всех типов кэшбеков
+GET http://localhost:8080/cashbacks
+
+###
+// Получить конкретный счет, например, Мадса Миккельсена
+GET http://localhost:8080/account/c98dae9c-309a-4804-96ba-49648fd3076e
+
+###
+// Выдать список счетов другого пользователя приложения (Ларс фон Триер)
+GET http://localhost:8080/person/+7(911)111-11-11
+
+###
+// Выдать список СВОИХ счетов (Ларс фон Триер)
+GET http://localhost:8080/own/+7(911)111-11-11
+
+###
+// Положить деньги на счет (Кристоф Вальц)
+PUT http://localhost:8080/account/operation
+Content-Type: application/json
+
+{"id": "0e7a7ec7-cef8-49a2-939a-850c5d342d86", "add": 3000}
+
+###
+// Снять деньги со счета (Мадс Миккельсен)
+PUT http://localhost:8080/account/operation
+Content-Type: application/json
+
+{"id": "c98dae9c-309a-4804-96ba-49648fd3076e", "subtr": 500000}
+
+###
+// Перевод денег, например, от Стеллана Скарсгарда Мадсу Миккельсену
+// ШАГ 1 - узнаем счета Стеллана
+GET http://localhost:8080/own/+7(933)333-33-33
+
+###
+// ШАГ 2 - узнаем счета Мадса
+GET http://localhost:8080/person/+7(944)444-44-44
+
+###
+// ШАГ 3 - осуществим международный перевод (с кэшбеком)
+PUT http://localhost:8080/account/operation
+Content-Type: application/json
+
+{"from_id": "58ac1207-e590-4e57-a298-6e3cfe00b8b6", "to_id": "c98dae9c-309a-4804-96ba-49648fd3076e", "cat": "national", "summa": 2525}
+
+###
+// Осуществим перевод с одного счета Ларса фон Триера на другой его счет (БЕЗ КЭШБЕКА)
+// С None не работает, с null работает
+PUT http://localhost:8080/account/operation
+Content-Type: application/json
+
+{"from_id": "a428fa44-8b67-4f59-87ad-2b4858f8572d", "to_id": "0a8f65f9-3580-46cb-b64a-4a318ef90638", "cat": null, "summa": 2500}
