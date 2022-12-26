@@ -5,7 +5,7 @@ import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server._
 import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport
 import misis.payment.model._
-import misis.payment.repository.{AccCbRepository, LessThanZero}
+import misis.payment.repository.{AccCbRepository, AccountNonExist, LessThanZero}
 import io.circe._
 import io.circe.generic.auto._
 import io.circe.parser._
@@ -29,7 +29,7 @@ class AccountRoute(repository: AccCbRepository)(implicit val ec: ExecutionContex
         get {
           onComplete(repository.get(id)) {
             case Success(value) => complete(value)
-            case Failure(e: NoSuchElementException) => complete(StatusCodes.NotFound)
+            case Failure(e: AccountNonExist) => complete(StatusCodes.NotFound, "Банковский счет не найден.")
           }
         }
       } ~ // Выдать список счетов другого пользователя приложения
@@ -37,7 +37,7 @@ class AccountRoute(repository: AccCbRepository)(implicit val ec: ExecutionContex
         get {
           onComplete(repository.getAcc(GetAcc(phone))) {
             case Success(value) => complete(value)
-            case Failure(e: NoSuchElementException) => complete(StatusCodes.NotFound)
+            case Failure(e: AccountNonExist) => complete(StatusCodes.NotFound, "Банковские счета данного пользователя не найдены.")
           }
         }
       } ~ // Выдать список СВОИХ счетов
@@ -45,20 +45,23 @@ class AccountRoute(repository: AccCbRepository)(implicit val ec: ExecutionContex
         get {
           onComplete(repository.getAccOwn(GetAcc(phone))) {
             case Success(value) => complete(value)
-            case Failure(e: NoSuchElementException) => complete(StatusCodes.NotFound)
+            case Failure(e: AccountNonExist) => complete(StatusCodes.NotFound, "Банковские счета не найдены.")
           }
         }
       } ~ // Пополнение счета
       path("account" / "operation") {
         (put & entity(as[TopupAcc])) { updateAcc =>
-          complete(repository.topupAcc(updateAcc))
+          onComplete(repository.topupAcc(updateAcc)) {
+            case Success(value) => complete(value)
+            case Failure(e: AccountNonExist) => complete(StatusCodes.NotFound, "Банковский счет не найден.")
+          }
         }
       } ~ // Снятие денег со счета
       path("account" / "operation") {
         (put & entity(as[TakeoutMoney])) { updateAcc =>
           onComplete(repository.takeoutMoney(updateAcc)) {
               case Success(value) => complete(value)
-              case Failure(e: NoSuchElementException) => complete(StatusCodes.NotFound)
+              case Failure(e: AccountNonExist) => complete(StatusCodes.NotFound, "Банковский счет не найден.")
               case Failure(e: LessThanZero) => complete(StatusCodes.NotAcceptable, "Недостаточно средств для выполнения операции. Пополните счет.")
             }
         }
@@ -67,6 +70,7 @@ class AccountRoute(repository: AccCbRepository)(implicit val ec: ExecutionContex
         (put & entity(as[MoneyOrder])) { updateAccs =>
           onComplete(repository.moneyOrder(updateAccs)) {
               case Success(value) => complete(value)
+              case Failure(e: AccountNonExist) => complete(StatusCodes.NotFound, "Банковский счет не найден.")
               case Failure(e: LessThanZero) => complete(StatusCodes.NotAcceptable, "Недостаточно средств для выполнения операции. Пополните счет.")
             }
         }

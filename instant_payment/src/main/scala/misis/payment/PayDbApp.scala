@@ -16,8 +16,9 @@ object PayDbApp extends App with FailFastCirceSupport {
   implicit val ec = system.dispatcher
   implicit val db = Database.forConfig("database.postgres")
 
-  val repository = new AccCbRepositoryDb
+
   new InitDb().prepare()
+  val repository = new AccCbRepositoryDb
 // путь, по которому мы принимаем запросы к нашему приложению
   val helloRoute = new HelloRoute().route
   val accRoute = new AccountRoute(repository).route
