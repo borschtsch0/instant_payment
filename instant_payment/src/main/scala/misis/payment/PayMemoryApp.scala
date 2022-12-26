@@ -8,10 +8,10 @@ import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport
 import misis.payment.repository.AccCbRepositoryInMemory
 import misis.payment.route.{AccountRoute, CashbackRoute, HelloRoute}
 
-// при добавлении трейта FailFastCirceSupport преобразование объектов в json производится автоматически
-object PayHttpApp extends App with FailFastCirceSupport {
+object PayMemoryApp extends App with FailFastCirceSupport {
 
-  implicit val system: ActorSystem = ActorSystem("PayApp") // для использования akka определяем систему
+  implicit val system: ActorSystem = ActorSystem("PayApp")
+  implicit val ec = system.dispatcher
   val repository = new AccCbRepositoryInMemory
 
 // путь, по которому мы принимаем запросы к нашему приложению

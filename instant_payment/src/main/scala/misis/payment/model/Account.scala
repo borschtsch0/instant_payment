@@ -3,7 +3,7 @@ package misis.payment.model
 import java.util.UUID
 
 // непосредственно банковский счет
-case class Account(id: UUID, owner: String, number: String, volume: Int)
+case class Account(id: UUID = UUID.randomUUID(), owner: String, number: String, volume: Int)
 
 case class CreateAcc(owner: String, number: String, volume: Int) // создание счета
 case class GetAcc(number: String) // Получение списка счетов по номеру

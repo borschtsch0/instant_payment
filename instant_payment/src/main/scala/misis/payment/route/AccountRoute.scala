@@ -1,16 +1,20 @@
 package misis.payment.route
 
+import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server._
 import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport
 import misis.payment.model._
-import misis.payment.repository.AccCbRepository
+import misis.payment.repository.{AccCbRepository, LessThanZero}
 import io.circe._
 import io.circe.generic.auto._
 import io.circe.parser._
 import io.circe.syntax._
 
-class AccountRoute(repository: AccCbRepository) extends FailFastCirceSupport {
+import scala.concurrent.ExecutionContext
+import scala.util.{Failure, Success}
+
+class AccountRoute(repository: AccCbRepository)(implicit val ec: ExecutionContext) extends FailFastCirceSupport {
   def route =
     (path("accounts") & get) {
       val list = repository.list()
@@ -23,17 +27,26 @@ class AccountRoute(repository: AccCbRepository) extends FailFastCirceSupport {
       } ~
       path("account" / JavaUUID) { id =>
         get {
-          complete(repository.get(id))
+          onComplete(repository.get(id)) {
+            case Success(value) => complete(value)
+            case Failure(e: NoSuchElementException) => complete(StatusCodes.NotFound)
+          }
         }
       } ~ // Выдать список счетов другого пользователя приложения
       path("person" / Segment) { phone =>
         get {
-          complete(repository.getAcc(GetAcc(phone)))
+          onComplete(repository.getAcc(GetAcc(phone))) {
+            case Success(value) => complete(value)
+            case Failure(e: NoSuchElementException) => complete(StatusCodes.NotFound)
+          }
         }
       } ~ // Выдать список СВОИХ счетов
       path("own" / Segment) { phone =>
         get {
-          complete(repository.getAccOwn(GetAcc(phone)))
+          onComplete(repository.getAccOwn(GetAcc(phone))) {
+            case Success(value) => complete(value)
+            case Failure(e: NoSuchElementException) => complete(StatusCodes.NotFound)
+          }
         }
       } ~ // Пополнение счета
       path("account" / "operation") {
@@ -43,12 +56,19 @@ class AccountRoute(repository: AccCbRepository) extends FailFastCirceSupport {
       } ~ // Снятие денег со счета
       path("account" / "operation") {
         (put & entity(as[TakeoutMoney])) { updateAcc =>
-          complete(repository.takeoutMoney(updateAcc))
+          onComplete(repository.takeoutMoney(updateAcc)) {
+              case Success(value) => complete(value)
+              case Failure(e: NoSuchElementException) => complete(StatusCodes.NotFound)
+              case Failure(e: LessThanZero) => complete(StatusCodes.NotAcceptable, "Недостаточно средств для выполнения операции. Пополните счет.")
+            }
         }
       } ~
       path("account" / "operation") {
         (put & entity(as[MoneyOrder])) { updateAccs =>
-          complete(repository.moneyOrder(updateAccs))
+          onComplete(repository.moneyOrder(updateAccs)) {
+              case Success(value) => complete(value)
+              case Failure(e: LessThanZero) => complete(StatusCodes.NotAcceptable, "Недостаточно средств для выполнения операции. Пополните счет.")
+            }
         }
       }
 }
