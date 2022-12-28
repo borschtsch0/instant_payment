@@ -5,7 +5,7 @@ import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server._
 import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport
 import misis.payment.model._
-import misis.payment.repository.AccCbRepository
+import misis.payment.repository.{AccCbRepository, CashbackNonExist}
 import io.circe._
 import io.circe.generic.auto._
 import io.circe.parser._
@@ -26,14 +26,17 @@ class CashbackRoute(repository: AccCbRepository) extends FailFastCirceSupport {
       } ~
       path("cashback" / "update") {
         (put & entity(as[UpdateCashback])) { newPerc =>
-          complete(repository.updateCashback(newPerc))
+          onComplete(repository.updateCashback(newPerc)) {
+            case Success(value) => complete(value)
+            case Failure(e: CashbackNonExist) => complete(StatusCodes.NotFound, "Такой тип кэшбека не существует.")
+          }
         }
       } ~
       path("cashback" / Segment) { cat =>
         get {
           onComplete(repository.getPercent(cat)) {
             case Success(value) => complete(value)
-            case Failure(e: NoSuchElementException) => complete(StatusCodes.NotFound)
+            case Failure(e: CashbackNonExist) => complete(StatusCodes.NotFound, "Такой тип кэшбека не существует.")
           }
         }
       }

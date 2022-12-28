@@ -16,7 +16,7 @@ trait AccCbRepository {
   def get(acc: UUID): Future[Account] // получить конкретный счет
   def getAcc(acc: GetAcc): Future[Seq[UUID]] // получить все счета конкретного пользователя
   def getAccOwn(acc: GetAcc): Future[Seq[(UUID, Int)]] // получить все счета конкретного пользователя (от себя)
-  def topupAcc(acc: TopupAcc): Future[Option[Account]]
-  def takeoutMoney(acc: TakeoutMoney): Future[Option[Account]]
+  def topupAcc(acc: TopupAcc): Future[Account]
+  def takeoutMoney(acc: TakeoutMoney): Future[Account]
   def moneyOrder(acc: MoneyOrder): Future[Int]
 }

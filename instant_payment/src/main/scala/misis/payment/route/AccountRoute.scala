@@ -1,6 +1,6 @@
 package misis.payment.route
 
-import akka.http.scaladsl.model.StatusCodes
+import akka.http.scaladsl.model.{HttpResponse, StatusCodes}
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server._
 import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport
@@ -53,7 +53,7 @@ class AccountRoute(repository: AccCbRepository)(implicit val ec: ExecutionContex
         (put & entity(as[TopupAcc])) { updateAcc =>
           onComplete(repository.topupAcc(updateAcc)) {
             case Success(value) => complete(value)
-            case Failure(e: AccountNonExist) => complete(StatusCodes.NotFound, "Банковский счет не найден.")
+            case Failure(e) => complete(StatusCodes.NotFound, "Банковский счет не найден.")
           }
         }
       } ~ // Снятие денег со счета
@@ -61,8 +61,8 @@ class AccountRoute(repository: AccCbRepository)(implicit val ec: ExecutionContex
         (put & entity(as[TakeoutMoney])) { updateAcc =>
           onComplete(repository.takeoutMoney(updateAcc)) {
               case Success(value) => complete(value)
-              case Failure(e: AccountNonExist) => complete(StatusCodes.NotFound, "Банковский счет не найден.")
               case Failure(e: LessThanZero) => complete(StatusCodes.NotAcceptable, "Недостаточно средств для выполнения операции. Пополните счет.")
+              case Failure(e: AccountNonExist) => complete(StatusCodes.NotFound, "Банковский счет не найден.")
             }
         }
       } ~
@@ -70,8 +70,8 @@ class AccountRoute(repository: AccCbRepository)(implicit val ec: ExecutionContex
         (put & entity(as[MoneyOrder])) { updateAccs =>
           onComplete(repository.moneyOrder(updateAccs)) {
               case Success(value) => complete(value)
-              case Failure(e: AccountNonExist) => complete(StatusCodes.NotFound, "Банковский счет не найден.")
               case Failure(e: LessThanZero) => complete(StatusCodes.NotAcceptable, "Недостаточно средств для выполнения операции. Пополните счет.")
+              case Failure(e: AccountNonExist) => complete(StatusCodes.NotFound, "Банковский счет не найден.")
             }
         }
       }

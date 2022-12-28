@@ -68,22 +68,24 @@ class AccCbRepositoryInMemory(implicit val ec: ExecutionContext) extends AccCbRe
     lst.map(accounts => {accounts.map(obj => (obj.id, obj.volume))})
   }
 
-  override def topupAcc(acc: TopupAcc): Future[Option[Account]] = Future {
-    bank.get(acc.id).map { account =>
+  override def topupAcc(acc: TopupAcc): Future[Account] = Future {
+    val a = bank.get(acc.id).map { account =>
       val new_vol = account.volume + acc.add
       val updated = account.copy(volume = new_vol)
       bank.put(account.id, updated)
-      updated
+      account
     }
+    a.get
   }
 
-  override def takeoutMoney(acc: TakeoutMoney): Future[Option[Account]] = Future {
-    bank.get(acc.id).map { account =>
+  override def takeoutMoney(acc: TakeoutMoney): Future[Account] = Future {
+    val a = bank.get(acc.id).map { account =>
       val new_vol = account.volume - acc.subtr
       val updated = account.copy(volume = new_vol)
       bank.put(account.id, updated)
-      updated
+      account
     }
+    a.get
   }
 
   override def moneyOrder(operation: MoneyOrder): Future[Int] = Future {

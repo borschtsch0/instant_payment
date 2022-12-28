@@ -35,6 +35,18 @@ Content-Type: application/json
 {"owner": "Mads Mikkelsen", "number": "+7(944)444-44-44","volume": 1000000}
 
 ###
+POST http://localhost:8080/account
+Content-Type: application/json
+
+{"owner": "Tom Schilling", "number": "+7(955)555-55-55","volume": 5000}
+
+###
+POST http://localhost:8080/account
+Content-Type: application/json
+
+{"owner": "Vincent Cassel", "number": "+7(966)666-66-66","volume": 50000}
+
+###
 // создание новых типов кэшбека
 POST http://localhost:8080/cashback
 Content-Type: application/json
@@ -88,6 +100,17 @@ Content-Type: application/json
 {"id": "900fc77d-a17d-40c8-b669-01fac999d73b", "subtr": 500000}
 
 ###
+// Получить размер конкретного типа кэшбека
+GET http://localhost:8080/cashback/regional
+
+###
+// Обновить конкретный тип кэшбека
+PUT http://localhost:8080/cashback/update
+Content-Type: application/json
+
+{"cat": "national", "perc": 15}
+
+###
 // Перевод денег, например, от Стеллана Скарсгарда Мадсу Миккельсену
 // ШАГ 1 - узнаем счета Стеллана
 GET http://localhost:8080/own/+7(933)333-33-33
@@ -113,16 +136,53 @@ GET http://localhost:8080/own/+7(911)111-11-11
 PUT http://localhost:8080/account/operation
 Content-Type: application/json
 
-{"from_id": "f07cc553-d819-452e-8920-e87040317b57", "to_id": "80197568-b868-40bb-8178-fe73b85680cd", "cat": null, "summa": 2500}
+{"from_id": "80197568-b868-40bb-8178-fe73b85680cd", "to_id": "f07cc553-d819-452e-8920-e87040317b57", "cat": null, "summa": 2500}
+
 ###
+// ------------------------------- ПРОВЕРКА ОШИБОК -------------------------------
 // Осуществим заранее невозможный перевод с одного счета Ларса фон Триера на другой его счет
 // Причина - мало средств на отправном счету
 // ШАГ 1  - выдать список СВОИХ счетов
 GET http://localhost:8080/own/+7(911)111-11-11
 
 ###
-// ШАГ 2 - попытаемся осуществить перевод (БЕЗ КЭШБЕКА)
+// ШАГ 2 - попытаемся осуществить невозможный перевод (БЕЗ КЭШБЕКА)
 PUT http://localhost:8080/account/operation
 Content-Type: application/json
 
 {"from_id": "bb03c8ec-d498-4a18-876f-35dc1b7eaeed", "to_id": "80197568-b868-40bb-8178-fe73b85680cd", "cat": null, "summa": 250000}
+
+###
+// Выдать список счетов несуществующего пользователя по следующему номеру
+GET http://localhost:8080/own/+7(900)000-00-00
+
+###
+// Получить размер неизвестного типа кэшбека
+GET http://localhost:8080/cashback/galactic
+
+###
+// Обновить неизвестный тип кэшбека
+PUT http://localhost:8080/cashback/update
+Content-Type: application/json
+
+{"cat": "interplanetary", "perc": 42}
+###
+// Положить деньги на счет неизвестно кому
+PUT http://localhost:8080/account/operation
+Content-Type: application/json
+
+{"id": "1f306543-da60-41ff-a4c2-be9d29c85d1b", "add": 30}
+
+###
+// Снять невозможно крупную сумму денег со счета Тома Шиллинга
+PUT http://localhost:8080/account/operation
+Content-Type: application/json
+
+{"id": "ebf46edf-4464-45ab-8513-3e8cc936f254", "subtr": 5000000}
+
+###
+// Снять деньги со счета неизвестно кого
+PUT http://localhost:8080/account/operation
+Content-Type: application/json
+
+{"id": "1f306543-da60-41ff-a4c2-be9d29c85d1b", "subtr": 30}

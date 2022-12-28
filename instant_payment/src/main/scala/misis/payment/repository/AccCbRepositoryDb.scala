@@ -1,5 +1,6 @@
 package misis.payment.repository
 
+import akka.http.scaladsl.model.StatusCodes
 import misis.payment.model.{Account, Cashback, CreateAcc, CreateCashback, GetAcc, MoneyOrder, TakeoutMoney, TopupAcc, UpdateCashback}
 import slick.jdbc.PostgresProfile.api._
 import misis.payment.db.AccCbDb._
@@ -24,22 +25,37 @@ class AccCbRepositoryDb(implicit val ec: ExecutionContext, db: Database) extends
 
   override def updateCashback(opt: UpdateCashback): Future[Option[Cashback]] = {
     for {
+      _ <- db.run(cashbackTable
+        .filter(_.cat === opt.cat)
+        .map(cb => cb.percent).result).map { cb =>
+        if (cb.nonEmpty)
+          cb.head
+        else
+          throw new CashbackNonExist
+      }
+
       _ <- db.run {
         cashbackTable
           .filter(_.cat === opt.cat)
           .map(_.percent)
           .update(opt.perc)
       }
+
       res <- findCashback(opt.cat)
     } yield res
   }
 
   override def getPercent(opt: String): Future[Int] = {
-    db.run(cashbackTable.filter(_.cat === opt).result.head).map(cb => cb.percent)
+    db.run(cashbackTable.filter(_.cat === opt).map(cb => cb.percent).result).map { cb =>
+      if (cb.nonEmpty)
+        cb.head
+      else
+        throw new CashbackNonExist
+    }
   }
 
    def findCashback(opt: String): Future[Option[Cashback]] = {
-    db.run(cashbackTable.filter(_.cat === opt).result.headOption)
+     db.run(cashbackTable.filter(_.cat === opt).result.headOption)
   }
 
 
@@ -56,8 +72,13 @@ class AccCbRepositoryDb(implicit val ec: ExecutionContext, db: Database) extends
   }
 
   override def get(acc: UUID): Future[Account] = {
-    val acnt = db.run(accountTable.filter(_.id === acc).result.head)
-    if (acnt.isCompleted) acnt else throw new AccountNonExist
+    val query = accountTable.filter(_.id === acc)
+    val acnt = db.run(query.result.head)
+    acnt
+//    if (acnt.value.nonEmpty)
+//      acnt
+//    else
+//      throw new AccountNonExist
   }
 
   def find(acc: UUID): Future[Option[Account]]  = {
@@ -65,106 +86,128 @@ class AccCbRepositoryDb(implicit val ec: ExecutionContext, db: Database) extends
   }
 
   override def getAcc(acc: GetAcc): Future[Seq[UUID]] = {
-    val acnt = db.run(accountTable.filter(_.number === acc.number).map(_.id).result)
-    if (acnt.isCompleted) acnt else throw new AccountNonExist
+    val query = accountTable.filter(_.number === acc.number)
+    val acnt = db.run(query.map(ac => ac.id).result)
+
+    acnt.map { ac =>
+      if (ac.nonEmpty)
+        ac
+      else
+        throw new AccountNonExist
+    }
   }
 
   override def getAccOwn(acc: GetAcc): Future[Seq[(UUID, Int)]] = {
-    val acnt = db.run(accountTable.filter(_.number === acc.number).map(ac => (ac.id, ac.volume)).result)
-    if (acnt.isCompleted) acnt else throw new AccountNonExist
+    val query = accountTable.filter(_.number === acc.number)
+    val acnt = db.run(query.map(ac => (ac.id, ac.volume)).result)
+
+    acnt.map{ ac =>
+      if (ac.nonEmpty)
+        ac
+      else
+        throw new AccountNonExist
+    }
   }
 
-  override def topupAcc(acc: TopupAcc): Future[Option[Account]] = {
-    val acnt = get(acc.id)
-    if (acnt.isCompleted) {
-      get(acc.id).map { acnt =>
-        val new_vol = acnt.volume + acc.add
-        db.run {
-          accountTable.filter(_.id === acc.id)
-            .map(_.volume).update(new_vol)
+  override def topupAcc(acc: TopupAcc): Future[Account] = {
+    val account = db.run(accountTable.filter(_.id === acc.id).map(ac => ac.id).result).map { ac =>
+      if (ac.nonEmpty) {
+        get(acc.id).map { acnt =>
+          val new_vol = acnt.volume + acc.add
+          db.run {
+            accountTable.filter(_.id === acc.id)
+              .map(_.volume).update(new_vol)
+          }
+          acnt
         }
       }
-      find(acc.id)
+      else
+        throw new AccountNonExist
     }
-    else
-      throw new AccountNonExist
+    account.flatten
   }
 
-  override def takeoutMoney(acc: TakeoutMoney): Future[Option[Account]] = {
-    val acnt = get(acc.id)
-    if (acnt.isCompleted) {
-      get(acc.id).map { acnt =>
-        if (acnt.volume - acc.subtr < 0)
-          throw new LessThanZero
-        else {
+  override def takeoutMoney(acc: TakeoutMoney): Future[Account] = {
+    val account = db.run(accountTable.filter(_.id === acc.id).map(ac => ac.id).result).map { ac =>
+      if (ac.nonEmpty) {
+        get(acc.id).map { acnt =>
           val new_vol = acnt.volume - acc.subtr
-          db.run {
+          if (new_vol < 0)
+            throw new LessThanZero
+          else
+            db.run {
               accountTable.filter(_.id === acc.id)
                 .map(_.volume).update(new_vol)
             }
+            acnt
         }
       }
-      find(acc.id)
+      else
+        throw new AccountNonExist
     }
-    else
-      throw new AccountNonExist
+    account.flatten
   }
 
   override def moneyOrder(acc: MoneyOrder): Future[Int] = {
-    val a = get(acc.from_id)
-    if (a.isCompleted) {
-      val cashb = acc.cat.getOrElse("0")
-      // 1 шаг - снятие денег с первого счета, если они вообще есть
-      get(acc.from_id).map { account =>
-        if ((account.volume - acc.summa) >= 0) {
-          val new_vol = account.volume - acc.summa
-          if (cashb != "0") {
-            getPercent(cashb).map { perc =>
-              val newest_vol = new_vol + round(acc.summa / 100 * perc)
-              for {
-                _ <- db.run {
-                  accountTable
-                    .filter(_.id === acc.from_id)
-                    .map(_.volume).update(newest_vol)
-                }
-                res <- find(acc.from_id)
-              } yield res
-            }
-          }
-          else {
-            for {
-              _ <- db.run {
-                accountTable
-                  .filter(_.id === acc.from_id)
-                  .map(_.volume).update(new_vol)
-              }
-              res <- find(acc.from_id)
-            } yield res
-          }
-          // 2 шаг - пополнение второго счета
-          val a_to = get(acc.to_id)
-          if (a_to.isCompleted) {
-            get(acc.to_id).flatMap { accnt =>
-              val new_volume = accnt.volume + acc.summa
-              db.run {
-                accountTable
-                  .filter(_.id === acc.to_id)
-                  .map(_.volume).update(new_volume)
-              }
-            }
-            acc.summa
-          }
-          else
-            throw new AccountNonExist
-        }
-        else
-          throw new LessThanZero
-      }
+    // 0 шаг - проверка ошибок
+    db.run(accountTable.filter(_.id === acc.from_id).map(_.id).result).map { ac =>
+      if (ac.nonEmpty) ac
+      else throw new AccountNonExist
     }
-    else
-      throw new AccountNonExist
+    db.run(accountTable.filter(_.id === acc.to_id).map(_.id).result).map { ac =>
+      if (ac.nonEmpty) ac
+      else throw new AccountNonExist
+    }
+    get(acc.from_id).map { account =>
+      if ((account.volume - acc.summa) >= 0)
+        account.volume - acc.summa
+      else
+        throw new LessThanZero
+    }
+
+    val cashb = acc.cat.getOrElse("0")
+    // 1 шаг - снятие денег с первого счета, если они вообще есть
+    get(acc.from_id).map { account =>
+      val new_vol = account.volume - acc.summa
+      if (cashb != "0") {
+        getPercent(cashb).map { perc =>
+          val newest_vol = new_vol + round(acc.summa / 100 * perc)
+          for {
+            _ <- db.run {
+              accountTable
+                .filter(_.id === acc.from_id)
+                .map(_.volume).update(newest_vol)
+            }
+            res <- find(acc.from_id)
+          } yield res
+        }
+      }
+      else {
+        for {
+          _ <- db.run {
+            accountTable
+              .filter(_.id === acc.from_id)
+              .map(_.volume).update(new_vol)
+          }
+          res <- find(acc.from_id)
+        } yield res
+      }
+
+
+        // 2 шаг - пополнение второго счета
+      get(acc.to_id).flatMap { accnt =>
+        val new_volume = accnt.volume + acc.summa
+        db.run {
+          accountTable
+            .filter(_.id === acc.to_id)
+            .map(_.volume).update(new_volume)
+        }
+      }
+      acc.summa
+    }
   }
 }
 
-case class LessThanZero() extends Error // Выбрана слишком большая сумма для перевода
-case class AccountNonExist() extends Error // Банковского счета не существует
+case class LessThanZero() extends Exception // Выбрана слишком большая сумма для перевода
+case class AccountNonExist() extends Exception // Банковского счета не существует
+case class CashbackNonExist() extends Exception
