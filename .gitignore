@@ -4,6 +4,7 @@ node_modules/
 out/
 test/
 example/
+instant_payment_service/
 
 .settings
 .project
