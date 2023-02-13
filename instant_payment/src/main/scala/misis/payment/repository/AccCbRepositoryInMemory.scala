@@ -89,12 +89,11 @@ class AccCbRepositoryInMemory(implicit val ec: ExecutionContext) extends AccCbRe
   }
 
   override def moneyOrder(operation: MoneyOrder): Future[Int] = Future {
-    val cashb = operation.cat.getOrElse("0")
     // 1 шаг - снятие денег с первого счета, если они вообще есть
     bank.get(operation.from_id).map { account =>
       val new_vol = account.volume - operation.summa
-      if (cashb != "0") {
-        val perc = types(cashb).percent
+      if (operation.cat.nonEmpty) {
+        val perc = types(operation.cat.get).percent
         val newest_vol = new_vol + round(operation.summa / 100 * perc)
         val updated = account.copy(volume = newest_vol)
         bank.put(account.id, updated)

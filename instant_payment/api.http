@@ -87,17 +87,17 @@ GET http://localhost:8080/own/+7(911)111-11-11
 
 ###
 // Положить деньги на счет (Кристоф Вальц)
-PUT http://localhost:8080/account/operation
+PUT http://localhost:8080/account/topup
 Content-Type: application/json
 
-{"id": "1f307984-da60-41ff-a4c2-be9d30c85d1b", "add": 3000}
+{"id": "ddd402ee-2993-4e00-a2f5-74228ee7bef6", "add": 150}
 
 ###
 // Снять деньги со счета (Мадс Миккельсен)
-PUT http://localhost:8080/account/operation
+PUT http://localhost:8080/account/takeout
 Content-Type: application/json
 
-{"id": "900fc77d-a17d-40c8-b669-01fac999d73b", "subtr": 500000}
+{"id": "900fc77d-a17d-40c8-b669-01fac999d73b", "subtr": 7575}
 
 ###
 // Получить размер конкретного типа кэшбека
@@ -121,7 +121,7 @@ GET http://localhost:8080/person/+7(944)444-44-44
 
 ###
 // ШАГ 3 - осуществим международный перевод (с кэшбеком)
-PUT http://localhost:8080/account/operation
+PUT http://localhost:8080/account/order
 Content-Type: application/json
 
 {"from_id": "ddd402ee-2993-4e00-a2f5-74228ee7bef6", "to_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "cat": "national", "summa": 2525}
@@ -133,10 +133,10 @@ GET http://localhost:8080/own/+7(911)111-11-11
 
 ###
 // ШАГ 2 - осуществим перевод (БЕЗ КЭШБЕКА)
-PUT http://localhost:8080/account/operation
+PUT http://localhost:8080/account/order
 Content-Type: application/json
 
-{"from_id": "80197568-b868-40bb-8178-fe73b85680cd", "to_id": "f07cc553-d819-452e-8920-e87040317b57", "cat": null, "summa": 2500}
+{"from_id": "f07cc553-d819-452e-8920-e87040317b57", "to_id": "80197568-b868-40bb-8178-fe73b85680cd", "cat": null, "summa": 2500}
 
 ###
 // ------------------------------- ПРОВЕРКА ОШИБОК -------------------------------
@@ -147,7 +147,7 @@ GET http://localhost:8080/own/+7(911)111-11-11
 
 ###
 // ШАГ 2 - попытаемся осуществить невозможный перевод (БЕЗ КЭШБЕКА)
-PUT http://localhost:8080/account/operation
+PUT http://localhost:8080/account/order
 Content-Type: application/json
 
 {"from_id": "bb03c8ec-d498-4a18-876f-35dc1b7eaeed", "to_id": "80197568-b868-40bb-8178-fe73b85680cd", "cat": null, "summa": 250000}
@@ -168,21 +168,21 @@ Content-Type: application/json
 {"cat": "interplanetary", "perc": 42}
 ###
 // Положить деньги на счет неизвестно кому
-PUT http://localhost:8080/account/operation
+PUT http://localhost:8080/account/topup
 Content-Type: application/json
 
 {"id": "1f306543-da60-41ff-a4c2-be9d29c85d1b", "add": 30}
 
 ###
 // Снять невозможно крупную сумму денег со счета Тома Шиллинга
-PUT http://localhost:8080/account/operation
+PUT http://localhost:8080/account/takeout
 Content-Type: application/json
 
 {"id": "ebf46edf-4464-45ab-8513-3e8cc936f254", "subtr": 5000000}
 
 ###
 // Снять деньги со счета неизвестно кого
-PUT http://localhost:8080/account/operation
+PUT http://localhost:8080/account/takeout
 Content-Type: application/json
 
 {"id": "1f306543-da60-41ff-a4c2-be9d29c85d1b", "subtr": 30}

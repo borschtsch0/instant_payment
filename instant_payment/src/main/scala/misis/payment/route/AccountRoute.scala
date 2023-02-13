@@ -49,7 +49,7 @@ class AccountRoute(repository: AccCbRepository)(implicit val ec: ExecutionContex
           }
         }
       } ~ // Пополнение счета
-      path("account" / "operation") {
+      path("account" / "topup") {
         (put & entity(as[TopupAcc])) { updateAcc =>
           onComplete(repository.topupAcc(updateAcc)) {
             case Success(value) => complete(value)
@@ -57,7 +57,7 @@ class AccountRoute(repository: AccCbRepository)(implicit val ec: ExecutionContex
           }
         }
       } ~ // Снятие денег со счета
-      path("account" / "operation") {
+      path("account" / "takeout") {
         (put & entity(as[TakeoutMoney])) { updateAcc =>
           onComplete(repository.takeoutMoney(updateAcc)) {
               case Success(value) => complete(value)
@@ -66,7 +66,7 @@ class AccountRoute(repository: AccCbRepository)(implicit val ec: ExecutionContex
             }
         }
       } ~
-      path("account" / "operation") {
+      path("account" / "order") {
         (put & entity(as[MoneyOrder])) { updateAccs =>
           onComplete(repository.moneyOrder(updateAccs)) {
               case Success(value) => complete(value)
