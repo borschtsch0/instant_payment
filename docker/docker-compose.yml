@@ -1,0 +1,23 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres
+    container_name: postgres-misis
+    environment:
+      POSTGRES_PASSWORD: 111
+      PGDATA: /var/lib/postgresql/data
+    ports:
+      - 5434:5432
+
+  instant_payment:
+    image: misis-instant_payment
+    container_name: misis-instant_payment
+    build:
+      dockerfile: ./docker/Dockerfile
+      context: ../
+    environment:
+      PGHOST: db
+      PGPORT: 5432
+    ports:
+      - 8080:8080

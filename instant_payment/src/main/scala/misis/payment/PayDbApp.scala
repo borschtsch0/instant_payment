@@ -27,3 +27,6 @@ object PayDbApp extends App with FailFastCirceSupport {
   // создание сервера http
   Http().newServerAt("0.0.0.0", 8080).bind(helloRoute ~ accRoute ~ cashRoute)
 }
+
+// docker run -ti 55c8ddb312b0 bash - вход в контейнер
+// docker-compose -f docker/docker-compose.yml up --build - перезапуск конфигурации приложения
