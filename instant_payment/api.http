@@ -86,11 +86,11 @@ GET http://localhost:8080/person/+7(911)111-11-11
 GET http://localhost:8080/own/+7(911)111-11-11
 
 ###
-// Положить деньги на счет (Кристоф Вальц)
+// Положить деньги на счет (Ларс фон Триер)
 PUT http://localhost:8080/account/topup
 Content-Type: application/json
 
-{"id": "ddd402ee-2993-4e00-a2f5-74228ee7bef6", "add": 150}
+{"id": "80197568-b868-40bb-8178-fe73b85680cd", "add": 4250}
 
 ###
 // Снять деньги со счета (Мадс Миккельсен)
@@ -139,6 +139,13 @@ Content-Type: application/json
 {"from_id": "f07cc553-d819-452e-8920-e87040317b57", "to_id": "80197568-b868-40bb-8178-fe73b85680cd", "cat": null, "summa": 2500}
 
 ###
+// Осуществим перевод денег от Ларса фон Триера в другое приложение к Венсану Касселю
+PUT /account/order
+Host: localhost:8080
+Content-Type: application/json
+
+{"from_id": "80197568-b868-40bb-8178-fe73b85680cd", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
+###
 // ------------------------------- ПРОВЕРКА ОШИБОК -------------------------------
 // Осуществим заранее невозможный перевод с одного счета Ларса фон Триера на другой его счет
 // Причина - мало средств на отправном счету
@@ -182,7 +189,8 @@ Content-Type: application/json
 
 ###
 // Снять деньги со счета неизвестно кого
-PUT http://localhost:8080/account/takeout
+PUT /account/takeout
+Host: localhost:8080
 Content-Type: application/json
 
 {"id": "1f306543-da60-41ff-a4c2-be9d29c85d1b", "subtr": 30}

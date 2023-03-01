@@ -1,0 +1,68 @@
+// создание новых счетов
+###
+POST /account
+Host: localhost:8081
+Content-Type: application/json
+
+{"owner": "Christoph Waltz", "number": "+7(922)222-22-22","volume": 100000}
+
+###
+POST /account
+Host: localhost:8081
+Content-Type: application/json
+
+{"owner": "Stellan Skarsgard", "number": "+7(933)333-33-33","volume": 500}
+
+###
+POST /account
+Host: localhost:8081
+Content-Type: application/json
+
+{"owner": "Vincent Cassel", "number": "+7(966)666-66-66","volume": 25000}
+
+###
+// создание новых типов кэшбека
+POST /cashback
+Host: localhost:8081
+Content-Type: application/json
+
+{"cat": "regional", "perc": 3}
+
+###
+POST /cashback
+Host: localhost:8081
+Content-Type: application/json
+
+{"cat": "national", "perc": 5}
+
+###
+POST /cashback
+Host: localhost:8081
+Content-Type: application/json
+
+{"cat": "VIP", "perc": 7}
+
+###
+// Просмотр всех счетов
+GET /accounts
+Host: localhost:8081
+
+###
+// Просмотр всех типов кэшбеков
+GET /cashbacks
+Host: localhost:8081
+
+###
+// Снимем деньги у Венсана Касселя
+PUT /account/takeout
+Host: localhost:8081
+Content-Type: application/json
+
+{"id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "subtr": 5000}
+###
+// Осуществим перевод денег Кристофа Вальца в другое приложение к Тому Шиллингу
+PUT /account/order
+Host: localhost:8081
+Content-Type: application/json
+
+{"from_id": "cf69b4c4-82a9-44b9-bf10-ae59a2acecbf", "to_id": "ebf46edf-4464-45ab-8513-3e8cc936f254", "cat": "regional", "summa": 10000}

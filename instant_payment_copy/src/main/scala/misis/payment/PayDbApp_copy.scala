@@ -11,7 +11,7 @@ import misis.payment.route.{AccountRoute, CashbackRoute, HelloRoute}
 import slick.jdbc.PostgresProfile.api._
 
 // при добавлении трейта FailFastCirceSupport преобразование объектов в json производится автоматически
-object PayDbApp extends App with FailFastCirceSupport {
+object PayDbApp_copy extends App with FailFastCirceSupport {
 
   implicit val system: ActorSystem = ActorSystem("PayApp") // для использования akka определяем систему
   implicit val ec = system.dispatcher
