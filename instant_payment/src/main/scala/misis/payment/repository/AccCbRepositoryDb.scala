@@ -9,7 +9,6 @@ import java.lang.Math.round
 import java.util.UUID
 import scala.collection.immutable.LinearSeq
 import scala.concurrent.{ExecutionContext, Future}
-import scala.util.{Failure, Success}
 
 class AccCbRepositoryDb(client: PaymentClient)(implicit val ec: ExecutionContext, db: Database) extends AccCbRepository {
   override def offers(): Future[Seq[Cashback]] = {
@@ -139,11 +138,11 @@ class AccCbRepositoryDb(client: PaymentClient)(implicit val ec: ExecutionContext
   override def moneyOrder(acc: MoneyOrder): Future[Int] = {
     // 0 шаг - проверка ошибок
     // Проверка существования счета отправителя
-    db.run(accountTable.filter(_.id === acc.from_id).map(_.id).result).flatMap { ac =>
-      ac.nonEmpty match {
+    db.run(accountTable.filter(_.id === acc.from_id).map(_.id).result).flatMap { ac1 =>
+      ac1.nonEmpty match {
         // Проверка существования счета получателя
-        case true => db.run(accountTable.filter(_.id === acc.to_id).map(_.id).result).flatMap { ac =>
-          ac.nonEmpty match {
+        case true => db.run(accountTable.filter(_.id === acc.to_id).map(_.id).result).flatMap { ac2 =>
+          ac2.nonEmpty match {
             // Проверка на овердрафт
             case true => get(acc.from_id).flatMap { account =>
               (account.volume - acc.summa) >= 0 match {
@@ -174,7 +173,7 @@ class AccCbRepositoryDb(client: PaymentClient)(implicit val ec: ExecutionContext
                 case false => throw new LessThanZero
               }
             }
-            case false => foreignOrder(acc)
+            case false => foreignOrder(acc).map(a => a.summa)
           }
         }
         case false => throw new AccountNonExist
@@ -182,8 +181,7 @@ class AccCbRepositoryDb(client: PaymentClient)(implicit val ec: ExecutionContext
     }
   }
 
-  override def foreignOrder(acc: MoneyOrder): Future[Int] = {
-    client.payment(OrderRequest(acc.to_id, acc.summa))
+  override def foreignOrder(acc: MoneyOrder): Future[MoneyOrder] = {
     get(acc.from_id).flatMap { account =>
       (account.volume - acc.summa) >= 0 match {
         // 1 шаг - снятие денег с первого счета
@@ -206,7 +204,8 @@ class AccCbRepositoryDb(client: PaymentClient)(implicit val ec: ExecutionContext
         }
         case false => throw new LessThanZero
       }
-    }
+    }.flatMap(_ => client.payment(OrderRequest(acc.to_id, acc.summa)))
+
   }
 }
 

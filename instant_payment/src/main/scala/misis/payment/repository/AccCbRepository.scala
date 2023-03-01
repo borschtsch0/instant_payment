@@ -19,5 +19,5 @@ trait AccCbRepository {
   def topupAcc(acc: TopupAcc): Future[Account]
   def takeoutMoney(acc: TakeoutMoney): Future[Account]
   def moneyOrder(acc: MoneyOrder): Future[Int]
-  def foreignOrder(acc:MoneyOrder): Future[Int]
+  def foreignOrder(acc:MoneyOrder): Future[MoneyOrder]
 }

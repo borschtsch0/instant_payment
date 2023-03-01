@@ -94,10 +94,10 @@ Content-Type: application/json
 
 ###
 // Снять деньги со счета (Мадс Миккельсен)
-PUT http://localhost:8080/account/takeout
+PUT http://localhost:8081/account/takeout
 Content-Type: application/json
 
-{"id": "900fc77d-a17d-40c8-b669-01fac999d73b", "subtr": 7575}
+{"id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "subtr": 10000}
 
 ###
 // Получить размер конкретного типа кэшбека
@@ -124,7 +124,7 @@ GET http://localhost:8080/person/+7(944)444-44-44
 PUT http://localhost:8080/account/order
 Content-Type: application/json
 
-{"from_id": "ddd402ee-2993-4e00-a2f5-74228ee7bef6", "to_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "cat": "national", "summa": 2525}
+{"from_id": "bb03c8ec-d498-4a18-876f-35dc1b7eaeed", "to_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "cat": "national", "summa": 2525}
 
 ###
 // Осуществим перевод с одного счета Ларса фон Триера на другой его счет
@@ -136,7 +136,7 @@ GET http://localhost:8080/own/+7(911)111-11-11
 PUT http://localhost:8080/account/order
 Content-Type: application/json
 
-{"from_id": "f07cc553-d819-452e-8920-e87040317b57", "to_id": "80197568-b868-40bb-8178-fe73b85680cd", "cat": null, "summa": 2500}
+{"from_id": "bb03c8ec-d498-4a18-876f-35dc1b7eaeed", "to_id": "80197568-b868-40bb-8178-fe73b85680cd", "cat": null, "summa": 2500}
 
 ###
 // Осуществим перевод денег от Ларса фон Триера в другое приложение к Венсану Касселю
@@ -144,7 +144,21 @@ PUT /account/order
 Host: localhost:8080
 Content-Type: application/json
 
-{"from_id": "80197568-b868-40bb-8178-fe73b85680cd", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
+{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
+###
+// Положить деньги на счет (Ларс фон Триер)
+PUT http://localhost:8080/account/topup
+Content-Type: application/json
+
+{"id": "900fc77d-a17d-40c8-b669-01fac999d73b", "add": 54200}
+
+###
+// Снять деньги со счета (Мадс Миккельсен)
+PUT http://localhost:8081/account/takeout
+Content-Type: application/json
+
+{"id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "subtr": 10000}
+
 ###
 // ------------------------------- ПРОВЕРКА ОШИБОК -------------------------------
 // Осуществим заранее невозможный перевод с одного счета Ларса фон Триера на другой его счет
