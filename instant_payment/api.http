@@ -67,7 +67,7 @@ Content-Type: application/json
 
 ###
 // Просмотр всех счетов
-GET http://localhost:8080/accounts
+GET http://localhost:8081/accounts
 
 ###
 // Просмотр всех типов кэшбеков
@@ -90,7 +90,7 @@ GET http://localhost:8080/own/+7(911)111-11-11
 PUT http://localhost:8080/account/topup
 Content-Type: application/json
 
-{"id": "80197568-b868-40bb-8178-fe73b85680cd", "add": 4250}
+{"id": "80197568-b868-40bb-8178-fe73b85680cd", "add": 5250}
 
 ###
 // Снять деньги со счета (Мадс Миккельсен)
@@ -150,14 +150,14 @@ Content-Type: application/json
 PUT http://localhost:8080/account/topup
 Content-Type: application/json
 
-{"id": "900fc77d-a17d-40c8-b669-01fac999d73b", "add": 54200}
+{"id": "900fc77d-a17d-40c8-b669-01fac999d73b", "add": 5250}
 
 ###
 // Снять деньги со счета (Мадс Миккельсен)
 PUT http://localhost:8081/account/takeout
 Content-Type: application/json
 
-{"id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "subtr": 10000}
+{"id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "subtr": 5000}
 
 ###
 // ------------------------------- ПРОВЕРКА ОШИБОК -------------------------------

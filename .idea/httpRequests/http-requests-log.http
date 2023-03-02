@@ -1,0 +1,614 @@
+GET http://localhost:8080/cashbacks
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-03-02T123507.200.json
+
+###
+
+PUT http://localhost:8080/account/order
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 134
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
+
+<> 2023-03-02T123432.500.txt
+
+###
+
+GET http://localhost:8081/accounts
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-03-02T123417.200.json
+
+###
+
+PUT http://localhost:8080/account/topup
+Content-Type: application/json
+Content-Length: 59
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"id": "900fc77d-a17d-40c8-b669-01fac999d73b", "add": 5250}
+
+<> 2023-03-02T123402.200.json
+
+###
+
+PUT http://localhost:8080/account/topup
+Content-Type: application/json
+Content-Length: 59
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"id": "80197568-b868-40bb-8178-fe73b85680cd", "add": 5250}
+
+<> 2023-03-02T123344.200.json
+
+###
+
+GET http://localhost:8080/accounts
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-03-02T123322.200.json
+
+###
+
+PUT http://localhost:8080/account/takeout
+Content-Type: application/json
+Content-Length: 63
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"id": "900fc77d-a17d-40c8-b669-01fac999d73b", "subtr": 119500}
+
+<> 2023-03-02T123309.200.json
+
+###
+
+GET http://localhost:8080/accounts
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-03-02T123214.200.json
+
+###
+
+PUT http://localhost:8081/account/takeout
+Content-Type: application/json
+Content-Length: 61
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "subtr": 5000}
+
+<> 2023-03-02T123203.200.json
+
+###
+
+PUT http://localhost:8080/account/topup
+Content-Type: application/json
+Content-Length: 60
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"id": "900fc77d-a17d-40c8-b669-01fac999d73b", "add": 77500}
+
+<> 2023-03-02T123153.200.json
+
+###
+
+PUT http://localhost:8080/account/order
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 134
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
+
+<> 2023-03-02T123039.500.txt
+
+###
+
+PUT http://localhost:8081/account/takeout
+Content-Type: application/json
+Content-Length: 62
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "subtr": 10000}
+
+<> 2023-03-02T004616.200.json
+
+###
+
+PUT http://localhost:8080/account/order
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 134
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
+
+<> 2023-03-02T004611.500.txt
+
+###
+
+PUT http://localhost:8080/account/order
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 134
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
+
+<> 2023-03-02T004145.500.txt
+
+###
+
+PUT http://localhost:8081/account/takeout
+Content-Type: application/json
+Content-Length: 62
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "subtr": 10000}
+
+<> 2023-03-02T004140.200.json
+
+###
+
+PUT http://localhost:8080/account/order
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 134
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
+
+<> 2023-03-02T002348.500.txt
+
+###
+
+PUT http://localhost:8080/account/order
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 134
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
+
+<> 2023-03-02T001939.500.txt
+
+###
+
+PUT http://localhost:8081/account/takeout
+Content-Type: application/json
+Content-Length: 61
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "subtr": 5000}
+
+<> 2023-03-02T001931.200.json
+
+###
+
+PUT http://localhost:8080/account/order
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 134
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
+
+<> 2023-03-02T001447.500.txt
+
+###
+
+PUT http://localhost:8081/account/takeout
+Content-Type: application/json
+Content-Length: 62
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "subtr": 20000}
+
+<> 2023-03-02T000214.200.json
+
+###
+
+PUT http://localhost:8080/account/order
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 134
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
+
+<> 2023-03-02T000124.500.txt
+
+###
+
+PUT http://localhost:8080/account/order
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 134
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
+
+<> 2023-03-01T235815.500.txt
+
+###
+
+PUT http://localhost:8080/account/topup
+Content-Type: application/json
+Content-Length: 60
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"id": "900fc77d-a17d-40c8-b669-01fac999d73b", "add": 54200}
+
+<> 2023-03-01T235253.200.json
+
+###
+
+PUT http://localhost:8080/account/order
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 134
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
+
+<> 2023-03-01T235032.200.json
+
+###
+
+PUT http://localhost:8080/account/order
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 134
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
+
+<> 2023-03-01T233924.500.txt
+
+###
+
+PUT http://localhost:8080/account/order
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 134
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
+
+<> 2023-03-01T233229.500.txt
+
+###
+
+GET http://localhost:8080/accounts
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-03-01T232856.200.json
+
+###
+
+GET http://localhost:8081/accounts
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-03-01T232842.200.json
+
+###
+
+PUT http://localhost:8080/account/order
+Content-Type: application/json
+Content-Length: 134
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"from_id": "f07cc553-d819-452e-8920-e87040317b57", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
+
+<> 2023-03-01T203518.500.txt
+
+###
+
+GET http://localhost:8080/own/+7(911)111-11-11
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-03-01T203442.200.json
+
+###
+
+PUT http://localhost:8080/account/order
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 134
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"from_id": "f07cc553-d819-452e-8920-e87040317b57", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
+
+<> 2023-03-01T202930.500.txt
+
+###
+
+GET http://localhost:8081/accounts
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-03-01T202738.200.json
+
+###
+
+GET http://localhost:8080/accounts
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-03-01T202721.200.json
+
+###
+
+PUT http://localhost:8081/account/takeout
+Content-Type: application/json
+Content-Length: 62
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "subtr": 25000}
+
+<> 2023-03-01T202714.200.json
+
+###
+
+GET http://localhost:8080/cashback/regional
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-03-01T202709.200.json
+
+###
+
+PUT http://localhost:8080/account/order
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 134
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
+
+<> 2023-03-01T202350.500.txt
+
+###
+
+PUT http://localhost:8080/account/order
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 134
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
+
+<> 2023-03-01T201643.500.txt
+
+###
+
+PUT http://localhost:8081/account/takeout
+Content-Type: application/json
+Content-Length: 62
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "subtr": 25000}
+
+<> 2023-03-01T201635.200.json
+
+###
+
+PUT http://localhost:8080/account/order
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 134
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
+
+<> 2023-03-01T201513.500.txt
+
+###
+
+PUT http://localhost:8080/account/order
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 134
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
+
+<> 2023-03-01T201511.500.txt
+
+###
+
+GET http://localhost:8080/accounts
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-03-01T201432.200.json
+
+###
+
+PUT http://localhost:8080/account/order
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 134
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"from_id": "80197568-b868-40bb-8178-fe73b85680cd", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
+
+<> 2023-03-01T201301.500.txt
+
+###
+
+PUT http://localhost:8080/account/order
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 134
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"from_id": "80197568-b868-40bb-8178-fe73b85680cd", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
+
+<> 2023-03-01T201258.500.txt
+
+###
+
+GET http://localhost:8081/accounts
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-03-01T201245.200.json
+
+###
+
+GET http://localhost:8080/own/+7(911)111-11-11
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-03-01T201225.200.json
+
+###
+
+PUT http://localhost:8080/account/order
+Content-Type: application/json
+Content-Length: 128
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"from_id": "bb03c8ec-d498-4a18-876f-35dc1b7eaeed", "to_id": "80197568-b868-40bb-8178-fe73b85680cd", "cat": null, "summa": 2500}
+
+<> 2023-03-01T201209.200.json
+
+###
+
+PUT http://localhost:8080/account/order
+Content-Type: application/json
+Content-Length: 134
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"from_id": "bb03c8ec-d498-4a18-876f-35dc1b7eaeed", "to_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "cat": "national", "summa": 2525}
+
+<> 2023-03-01T201154.200.json
+
+###
+
+GET http://localhost:8080/own/+7(911)111-11-11
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-03-01T201137.200.json
+
+###
+
+PUT http://localhost:8081/account/takeout
+Content-Type: application/json
+Content-Length: 61
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "subtr": 5000}
+
+<> 2023-03-01T201130.200.json
+
+###
+
+PUT http://localhost:8080/account/order
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 134
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"from_id": "bb03c8ec-d498-4a18-876f-35dc1b7eaeed", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
+
+<> 2023-03-01T200948.500.txt
+
+###
+
