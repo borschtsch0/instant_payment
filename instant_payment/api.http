@@ -67,7 +67,7 @@ Content-Type: application/json
 
 ###
 // Просмотр всех счетов
-GET http://localhost:8081/accounts
+GET http://localhost:8080/accounts
 
 ###
 // Просмотр всех типов кэшбеков

@@ -1,3 +1,35 @@
+PUT http://localhost:8080/account/order
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 134
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
+
+<> 2023-03-06T161635.200.json
+
+###
+
+GET http://localhost:8080/accounts
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-03-06T161609.200.json
+
+###
+
+GET http://localhost:8081/accounts
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-03-06T161555.200.json
+
+###
+
 GET http://localhost:8080/cashbacks
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
@@ -573,42 +605,6 @@ Accept-Encoding: br,deflate,gzip,x-gzip
 {"from_id": "bb03c8ec-d498-4a18-876f-35dc1b7eaeed", "to_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "cat": "national", "summa": 2525}
 
 <> 2023-03-01T201154.200.json
-
-###
-
-GET http://localhost:8080/own/+7(911)111-11-11
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-03-01T201137.200.json
-
-###
-
-PUT http://localhost:8081/account/takeout
-Content-Type: application/json
-Content-Length: 61
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{"id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "subtr": 5000}
-
-<> 2023-03-01T201130.200.json
-
-###
-
-PUT http://localhost:8080/account/order
-Host: localhost:8080
-Content-Type: application/json
-Content-Length: 134
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{"from_id": "bb03c8ec-d498-4a18-876f-35dc1b7eaeed", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
-
-<> 2023-03-01T200948.500.txt
 
 ###
 

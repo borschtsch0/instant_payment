@@ -7,12 +7,12 @@ import akka.http.scaladsl.unmarshalling.Unmarshal
 import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport
 import io.circe.generic.auto._
 import io.circe.syntax._
-import misis.payment.model.{MoneyOrder, OrderRequest}
+import misis.payment.model.{Account, MoneyOrder, OrderRequest}
 
 import scala.concurrent.{ExecutionContext, Future}
 
 class PaymentClient(implicit val ec: ExecutionContext, actorSystem: ActorSystem) extends FailFastCirceSupport {
-  def payment(order: OrderRequest): Future[MoneyOrder] = {
+  def payment(order: OrderRequest): Future[Account] = {
     val request = HttpRequest(
       method = HttpMethods.PUT,
       uri = s"http://localhost:8081/account/topup",
@@ -20,7 +20,7 @@ class PaymentClient(implicit val ec: ExecutionContext, actorSystem: ActorSystem)
     )
     for {
       response <- Http().singleRequest(request)
-      result <- Unmarshal(response).to[MoneyOrder]
+      result <- Unmarshal(response).to[Account]
     } yield result
 
   }

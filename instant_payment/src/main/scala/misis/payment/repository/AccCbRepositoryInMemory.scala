@@ -112,5 +112,5 @@ class AccCbRepositoryInMemory(implicit val ec: ExecutionContext) extends AccCbRe
     operation.summa
   }
 
-  override def foreignOrder(acc: MoneyOrder): Future[MoneyOrder] = ???
+  override def foreignOrder(acc: MoneyOrder): Future[Account] = ???
 }

@@ -173,7 +173,7 @@ class AccCbRepositoryDb(client: PaymentClient)(implicit val ec: ExecutionContext
                 case false => throw new LessThanZero
               }
             }
-            case false => foreignOrder(acc).map(a => a.summa)
+            case false => foreignOrder(acc).map(a => a.volume)
           }
         }
         case false => throw new AccountNonExist
@@ -181,7 +181,7 @@ class AccCbRepositoryDb(client: PaymentClient)(implicit val ec: ExecutionContext
     }
   }
 
-  override def foreignOrder(acc: MoneyOrder): Future[MoneyOrder] = {
+  override def foreignOrder(acc: MoneyOrder): Future[Account] = {
     get(acc.from_id).flatMap { account =>
       (account.volume - acc.summa) >= 0 match {
         // 1 шаг - снятие денег с первого счета
