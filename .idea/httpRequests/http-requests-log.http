@@ -1,3 +1,12 @@
+GET http://localhost:8080/accounts
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-05-24T231703.200.json
+
+###
+
 PUT http://localhost:8080/account/order
 Host: localhost:8080
 Content-Type: application/json
@@ -592,19 +601,6 @@ Accept-Encoding: br,deflate,gzip,x-gzip
 {"from_id": "bb03c8ec-d498-4a18-876f-35dc1b7eaeed", "to_id": "80197568-b868-40bb-8178-fe73b85680cd", "cat": null, "summa": 2500}
 
 <> 2023-03-01T201209.200.json
-
-###
-
-PUT http://localhost:8080/account/order
-Content-Type: application/json
-Content-Length: 134
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{"from_id": "bb03c8ec-d498-4a18-876f-35dc1b7eaeed", "to_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "cat": "national", "summa": 2525}
-
-<> 2023-03-01T201154.200.json
 
 ###
 
