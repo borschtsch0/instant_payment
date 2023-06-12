@@ -28,19 +28,22 @@ trait WithKafka {
 
     implicit def simpleTopicName[T](implicit tag: ClassTag[T]): TopicName[T] = () => tag.runtimeClass.getSimpleName
 
+  // Получение сообщений
     def kafkaSource[T](implicit decoder: Decoder[T], topicName: TopicName[T]) = Consumer
         .committableSource(consumerSettings, Subscriptions.topics(topicName.get))
         .map(message => message.record.value())
         .map(body => decode[T](body))
         .collect {
-            case Right(command) =>
-                command
+            case Right(command) => command
             case Left(error) => throw new RuntimeException(s"Ошибка при разборе сообщения $error")
         }
         .log(s"Случилась ошибка при чтении топика ${topicName.get}")
 
+    // Обработка сообщений
     def kafkaSink[T](implicit encoder: Encoder[T], topicName: TopicName[T]) = Flow[T]
-        .map(event => event.asJson.noSpaces)
+        .map(event => {
+          event.asJson.noSpaces
+        })
         .map(value => new ProducerRecord[String, String](topicName.get, value))
         .log(s"Случилась ошибка при обработке сообщения из топика ${topicName.get}")
         .to(Producer.plainSink(producerSettings))

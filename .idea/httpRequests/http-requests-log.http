@@ -1,606 +1,500 @@
-GET http://localhost:8080/accounts
+POST http://localhost:8071/update/1/-500
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-05-24T231703.200.json
+<> 2023-06-12T202250.200.json
 
 ###
 
-PUT http://localhost:8080/account/order
-Host: localhost:8080
-Content-Type: application/json
-Content-Length: 134
+POST http://localhost:8071/update/1/100
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
-
-<> 2023-03-06T161635.200.json
+<> 2023-06-12T202240.200.json
 
 ###
 
-GET http://localhost:8080/accounts
+POST http://localhost:8071/update/1/-500
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-03-06T161609.200.json
+<> 2023-06-12T201920.200.json
 
 ###
 
-GET http://localhost:8081/accounts
+POST http://localhost:8071/update/1/-50
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-03-06T161555.200.json
+<> 2023-06-12T201914.200.json
 
 ###
 
-GET http://localhost:8080/cashbacks
+POST http://localhost:8071/update/1/100
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-03-02T123507.200.json
+<> 2023-06-12T201902.200.json
 
 ###
 
-PUT http://localhost:8080/account/order
-Host: localhost:8080
-Content-Type: application/json
-Content-Length: 134
+POST http://localhost:8071/update/1/-500
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
-
-<> 2023-03-02T123432.500.txt
+<> 2023-06-12T201324.200.json
 
 ###
 
-GET http://localhost:8081/accounts
+POST http://localhost:8071/update/1/-50
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-03-02T123417.200.json
+<> 2023-06-12T201320.200.json
 
 ###
 
-PUT http://localhost:8080/account/topup
-Content-Type: application/json
-Content-Length: 59
+POST http://localhost:8071/update/1/100
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"id": "900fc77d-a17d-40c8-b669-01fac999d73b", "add": 5250}
-
-<> 2023-03-02T123402.200.json
+<> 2023-06-12T201317.200.json
 
 ###
 
-PUT http://localhost:8080/account/topup
-Content-Type: application/json
-Content-Length: 59
+POST http://localhost:8071/update/1/-500
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"id": "80197568-b868-40bb-8178-fe73b85680cd", "add": 5250}
-
-<> 2023-03-02T123344.200.json
+<> 2023-06-12T201122.200.json
 
 ###
 
-GET http://localhost:8080/accounts
+POST http://localhost:8071/update/1/-50
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-03-02T123322.200.json
+<> 2023-06-12T201112.200.json
 
 ###
 
-PUT http://localhost:8080/account/takeout
-Content-Type: application/json
-Content-Length: 63
+POST http://localhost:8071/update/1/100
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"id": "900fc77d-a17d-40c8-b669-01fac999d73b", "subtr": 119500}
-
-<> 2023-03-02T123309.200.json
+<> 2023-06-12T201105.200.json
 
 ###
 
-GET http://localhost:8080/accounts
+POST http://localhost:8071/update/1/-500
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-03-02T123214.200.json
+<> 2023-06-12T200939.200.json
 
 ###
 
-PUT http://localhost:8081/account/takeout
-Content-Type: application/json
-Content-Length: 61
+POST http://localhost:8071/update/1/-50
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "subtr": 5000}
-
-<> 2023-03-02T123203.200.json
+<> 2023-06-12T200930.200.json
 
 ###
 
-PUT http://localhost:8080/account/topup
-Content-Type: application/json
-Content-Length: 60
+POST http://localhost:8071/update/1/100
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"id": "900fc77d-a17d-40c8-b669-01fac999d73b", "add": 77500}
-
-<> 2023-03-02T123153.200.json
+<> 2023-06-12T200819.200.json
 
 ###
 
-PUT http://localhost:8080/account/order
-Host: localhost:8080
-Content-Type: application/json
-Content-Length: 134
+POST http://localhost:8071/update/1/-500
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
-
-<> 2023-03-02T123039.500.txt
+<> 2023-06-12T193649.200.json
 
 ###
 
-PUT http://localhost:8081/account/takeout
-Content-Type: application/json
-Content-Length: 62
+POST http://localhost:8071/update/1/-50
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "subtr": 10000}
-
-<> 2023-03-02T004616.200.json
+<> 2023-06-12T193639.200.json
 
 ###
 
-PUT http://localhost:8080/account/order
-Host: localhost:8080
-Content-Type: application/json
-Content-Length: 134
+POST http://localhost:8071/update/1/100
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
-
-<> 2023-03-02T004611.500.txt
+<> 2023-06-12T193630.200.json
 
 ###
 
-PUT http://localhost:8080/account/order
-Host: localhost:8080
-Content-Type: application/json
-Content-Length: 134
+POST http://localhost:8071/update/1/-500
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
-
-<> 2023-03-02T004145.500.txt
+<> 2023-06-12T193239.200.json
 
 ###
 
-PUT http://localhost:8081/account/takeout
-Content-Type: application/json
-Content-Length: 62
+POST http://localhost:8071/update/1/-50
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "subtr": 10000}
-
-<> 2023-03-02T004140.200.json
+<> 2023-06-12T193233.200.json
 
 ###
 
-PUT http://localhost:8080/account/order
-Host: localhost:8080
-Content-Type: application/json
-Content-Length: 134
+POST http://localhost:8071/update/1/100
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
-
-<> 2023-03-02T002348.500.txt
+<> 2023-06-12T193225.200.json
 
 ###
 
-PUT http://localhost:8080/account/order
-Host: localhost:8080
-Content-Type: application/json
-Content-Length: 134
+POST http://localhost:8071/update/1/-500
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
-
-<> 2023-03-02T001939.500.txt
+<> 2023-06-12T190105.200.json
 
 ###
 
-PUT http://localhost:8081/account/takeout
-Content-Type: application/json
-Content-Length: 61
+POST http://localhost:8071/update/1/-50
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "subtr": 5000}
-
-<> 2023-03-02T001931.200.json
+<> 2023-06-12T190058.200.json
 
 ###
 
-PUT http://localhost:8080/account/order
-Host: localhost:8080
-Content-Type: application/json
-Content-Length: 134
+POST http://localhost:8071/update/1/100
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
-
-<> 2023-03-02T001447.500.txt
+<> 2023-06-12T190044.200.json
 
 ###
 
-PUT http://localhost:8081/account/takeout
-Content-Type: application/json
-Content-Length: 62
+POST http://localhost:8071/update/1/-1000
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "subtr": 20000}
-
-<> 2023-03-02T000214.200.json
+<> 2023-06-12T183001.200.json
 
 ###
 
-PUT http://localhost:8080/account/order
-Host: localhost:8080
-Content-Type: application/json
-Content-Length: 134
+POST http://localhost:8071/update/1/100
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
-
-<> 2023-03-02T000124.500.txt
+<> 2023-06-12T182957.200.json
 
 ###
 
-PUT http://localhost:8080/account/order
-Host: localhost:8080
-Content-Type: application/json
-Content-Length: 134
+POST http://localhost:8071/update/1/-1000
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
-
-<> 2023-03-01T235815.500.txt
+<> 2023-06-12T182434.200.json
 
 ###
 
-PUT http://localhost:8080/account/topup
-Content-Type: application/json
-Content-Length: 60
+POST http://localhost:8071/update/1/100
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"id": "900fc77d-a17d-40c8-b669-01fac999d73b", "add": 54200}
-
-<> 2023-03-01T235253.200.json
+<> 2023-06-12T182421.200.json
 
 ###
 
-PUT http://localhost:8080/account/order
-Host: localhost:8080
-Content-Type: application/json
-Content-Length: 134
+POST http://localhost:8071/update/1/-1000
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
-
-<> 2023-03-01T235032.200.json
+<> 2023-06-12T181212.200.json
 
 ###
 
-PUT http://localhost:8080/account/order
-Host: localhost:8080
-Content-Type: application/json
-Content-Length: 134
+POST http://localhost:8071/update/1/100
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
-
-<> 2023-03-01T233924.500.txt
+<> 2023-06-12T181118.200.json
 
 ###
 
-PUT http://localhost:8080/account/order
-Host: localhost:8080
-Content-Type: application/json
-Content-Length: 134
+POST http://localhost:8071/update/1/-100
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
-
-<> 2023-03-01T233229.500.txt
+<> 2023-06-12T180833.200.json
 
 ###
 
-GET http://localhost:8080/accounts
+POST http://localhost:8071/update/1/-1000
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-03-01T232856.200.json
+<> 2023-06-12T180828.200.json
 
 ###
 
-GET http://localhost:8081/accounts
+POST http://localhost:8071/update/1/-1000
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-03-01T232842.200.json
+<> 2023-06-12T180823.200.json
 
 ###
 
-PUT http://localhost:8080/account/order
-Content-Type: application/json
-Content-Length: 134
+POST http://localhost:8071/update/1/1000
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"from_id": "f07cc553-d819-452e-8920-e87040317b57", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
-
-<> 2023-03-01T203518.500.txt
+<> 2023-06-12T180722.200.json
 
 ###
 
-GET http://localhost:8080/own/+7(911)111-11-11
+POST http://localhost:8071/update/1/1000
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-03-01T203442.200.json
+<> 2023-06-12T180603.200.json
 
 ###
 
-PUT http://localhost:8080/account/order
-Host: localhost:8080
-Content-Type: application/json
-Content-Length: 134
+POST http://localhost:8071/update/1/-1000
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"from_id": "f07cc553-d819-452e-8920-e87040317b57", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
-
-<> 2023-03-01T202930.500.txt
+<> 2023-06-12T180334.200.json
 
 ###
 
-GET http://localhost:8081/accounts
+POST http://localhost:8071/update/1/-1000
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-03-01T202738.200.json
+<> 2023-06-12T164701.200.json
 
 ###
 
-GET http://localhost:8080/accounts
+POST http://localhost:8071/update/1/100
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-03-01T202721.200.json
+<> 2023-06-12T164654.200.json
 
 ###
 
-PUT http://localhost:8081/account/takeout
-Content-Type: application/json
-Content-Length: 62
+POST http://localhost:8071/update/1/-1000
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "subtr": 25000}
-
-<> 2023-03-01T202714.200.json
+<> 2023-06-12T163844.200.json
 
 ###
 
-GET http://localhost:8080/cashback/regional
+POST http://localhost:8071/update/1/100
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-03-01T202709.200.json
+<> 2023-06-12T163835.200.json
 
 ###
 
-PUT http://localhost:8080/account/order
-Host: localhost:8080
-Content-Type: application/json
-Content-Length: 134
+POST http://localhost:8071/update/1/-5000
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
-
-<> 2023-03-01T202350.500.txt
+<> 2023-06-12T162943.200.json
 
 ###
 
-PUT http://localhost:8080/account/order
-Host: localhost:8080
-Content-Type: application/json
-Content-Length: 134
+POST http://localhost:8071/update/1/500
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
-
-<> 2023-03-01T201643.500.txt
+<> 2023-06-12T162930.200.json
 
 ###
 
-PUT http://localhost:8081/account/takeout
-Content-Type: application/json
-Content-Length: 62
+POST http://localhost:8071/update/1/-5000
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "subtr": 25000}
-
-<> 2023-03-01T201635.200.json
+<> 2023-06-12T162305.200.json
 
 ###
 
-PUT http://localhost:8080/account/order
-Host: localhost:8080
-Content-Type: application/json
-Content-Length: 134
+POST http://localhost:8071/update/1/500
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
-
-<> 2023-03-01T201513.500.txt
+<> 2023-06-12T162254.200.json
 
 ###
 
-PUT http://localhost:8080/account/order
-Host: localhost:8080
-Content-Type: application/json
-Content-Length: 134
+POST http://localhost:8071/update/1/-500
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"from_id": "900fc77d-a17d-40c8-b669-01fac999d73b", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
-
-<> 2023-03-01T201511.500.txt
+<> 2023-06-12T160946.200.json
 
 ###
 
-GET http://localhost:8080/accounts
+POST http://localhost:8071/update/1/-50
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-03-01T201432.200.json
+<> 2023-06-12T160927.200.json
 
 ###
 
-PUT http://localhost:8080/account/order
-Host: localhost:8080
-Content-Type: application/json
-Content-Length: 134
+POST http://localhost:8071/update/1/-50
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"from_id": "80197568-b868-40bb-8178-fe73b85680cd", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
-
-<> 2023-03-01T201301.500.txt
+<> 2023-06-12T160914.200.json
 
 ###
 
-PUT http://localhost:8080/account/order
-Host: localhost:8080
-Content-Type: application/json
-Content-Length: 134
+POST http://localhost:8071/update/1/-50
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"from_id": "80197568-b868-40bb-8178-fe73b85680cd", "to_id": "36003b11-7718-43fd-be82-7bb7cff1e4d7", "cat": "national", "summa": 5000}
-
-<> 2023-03-01T201258.500.txt
+<> 2023-06-12T151722.200.json
 
 ###
 
-GET http://localhost:8081/accounts
+POST http://localhost:8071/update/2/284
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-03-01T201245.200.json
+<> 2023-06-12T151710.200.json
 
 ###
 
-GET http://localhost:8080/own/+7(911)111-11-11
+POST http://localhost:8071/update/1/100
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-03-01T201225.200.json
+<> 2023-06-12T151659.200.json
 
 ###
 
-PUT http://localhost:8080/account/order
-Content-Type: application/json
-Content-Length: 128
+POST http://localhost:8071/update/2/284
+Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{"from_id": "bb03c8ec-d498-4a18-876f-35dc1b7eaeed", "to_id": "80197568-b868-40bb-8178-fe73b85680cd", "cat": null, "summa": 2500}
-
-<> 2023-03-01T201209.200.json
+<> 2023-06-12T150321.200.json
 
 ###
 

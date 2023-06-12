@@ -2,7 +2,7 @@ package misis.repository
 
 import misis.TopicName
 import misis.kafka.Streams
-import misis.model.{Account, AccountUpdate, TransferStart}
+import misis.model.{AccountUpdate, TransferStart}
 import io.circe.generic.auto._
 import scala.concurrent.Future
 

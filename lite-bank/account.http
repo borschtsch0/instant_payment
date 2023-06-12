@@ -1,19 +1,19 @@
 ###
-POST localhost:8071/update/1/1234
+GET localhost:8082/hello
+
+###
+POST localhost:8071/update/1/-500
 
 ###
 POST localhost:8071/update/2/284
-
-###
-POST localhost:8071/update/3/4564
 
 ###
 POST localhost:8071/transfer
 Content-Type: application/json
 
 {
-  "sourceId": 1,
-  "destinationId": 2,
+  "sourceId": 2,
+  "destinationId": 1,
   "value": 234
 }
 
