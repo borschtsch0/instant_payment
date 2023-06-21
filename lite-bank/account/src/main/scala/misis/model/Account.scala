@@ -8,14 +8,15 @@ case class Account(id: Int, amount: Int) {
 }
 
 trait Command
-case class AccountUpdate(accountId: Int, value: Int, category: Option[String], tags: Option[Seq[String]])
+case class AccountUpdate(accountId: Int, value: Int, toId: Option[Int]/*, category: Option[String], tags: Option[Seq[String]]*/)
 
 trait Event
 case class AccountUpdated(
-    operationId: UUID = UUID.randomUUID(),
+//    operationId: UUID = UUID.randomUUID(),
     accountId: Int,
     value: Int,
-    publishedAt: Option[Instant] = Some(Instant.now()),
-    category: Option[String],
-    tags: Option[Seq[String]]
+    toId: Option[Int]//,
+//    publishedAt: Option[Instant] = Some(Instant.now()),
+//    category: Option[String],
+//    tags: Option[Seq[String]]
 )

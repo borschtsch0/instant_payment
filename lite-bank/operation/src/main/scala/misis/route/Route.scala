@@ -6,7 +6,7 @@ import io.circe.generic.auto._
 import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport
 import misis.TopicName
 import misis.kafka.Streams
-import misis.model.{Account, AccountUpdate, TransferStart}
+import misis.model.{AccountUpdate, TransferStart}
 import misis.repository.Repository
 
 import scala.concurrent.ExecutionContext
@@ -21,12 +21,9 @@ class Route(streams: Streams, repository: Repository)(implicit ec: ExecutionCont
             complete("ok")
         } ~
             (path("update" / IntNumber / Segment) { (accountId, value) =>
-                val value_mod = value.toInt
-                val command = AccountUpdate(accountId, value_mod)
-                streams.produceCommand(command) match {
-                case error: Error => complete(StatusCodes.NotAcceptable, "Ошибка. Операция не выполнена.")
-                case value => complete(command)
-                }
+                val command = AccountUpdate(accountId, value.toInt, None)
+                streams.produceCommand(command)
+                complete(command)
             }) ~
             (path("transfer") & post & entity(as[TransferStart])) { transfer =>
                 repository.transfer(transfer)
