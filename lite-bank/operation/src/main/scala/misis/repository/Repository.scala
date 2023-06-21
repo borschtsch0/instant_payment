@@ -1,11 +1,9 @@
 package misis.repository
 
-import akka.stream.scaladsl.Sink
 import misis.TopicName
 import misis.kafka.Streams
 import misis.model.{AccountUpdate, AccountUpdated, TransferStart}
 import io.circe.generic.auto._
-import misis.OperationApp.system
 
 class Repository(streams: Streams){
     implicit val commandTopicName: TopicName[AccountUpdate] = streams.simpleTopicName[AccountUpdate]
