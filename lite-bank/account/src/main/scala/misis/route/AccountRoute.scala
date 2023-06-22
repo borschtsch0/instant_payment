@@ -15,12 +15,14 @@ class AccountRoute(repository: AccountRepository)(implicit ec: ExecutionContext)
         (path("hello") & get) {
             complete("ok")
         } ~
-          (path("create" / Segment) & post) { value =>
+          path("create" / Segment) { value =>
             val amount = value.toInt
             amount >= 0 match {
               case true =>
-                repository.create(amount)
-                complete(amount)
+                  onComplete(repository.create(amount)) {
+                    case Failure(exception: AccountExists) => complete(StatusCodes.NotAcceptable, "Счет уже был создан.")
+                    case Success(value) => complete(amount)
+                }
               case false =>
                 complete(StatusCodes.NotAcceptable, "Счет не был создан. Сумма должна быть положительной.")
             }

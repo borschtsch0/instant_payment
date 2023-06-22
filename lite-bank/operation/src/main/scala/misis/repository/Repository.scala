@@ -8,7 +8,7 @@ import io.circe.generic.auto._
 class Repository(streams: Streams){
     implicit val commandTopicName: TopicName[AccountUpdate] = streams.simpleTopicName[AccountUpdate]
 
-    implicit val updatedTopicName: TopicName[AccountUpdated] = streams.simpleTopicName[AccountUpdated]
+//    implicit val updatedTopicName: TopicName[AccountUpdated] = streams.simpleTopicName[AccountUpdated]
 
     def transfer(transfer: TransferStart) = {
         if (transfer.value > 0) {

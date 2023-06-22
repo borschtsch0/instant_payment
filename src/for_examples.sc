@@ -16,3 +16,9 @@ a.put(1, 50)
 p
 println(a)
 
+def getFeePercent(value: Int):Int = {
+  value - value / 100 * 5
+}
+
+getFeePercent(105)
+

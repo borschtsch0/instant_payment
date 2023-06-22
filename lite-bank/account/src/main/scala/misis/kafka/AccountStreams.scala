@@ -13,8 +13,9 @@ import scala.concurrent.ExecutionContext
 class AccountStreams(repository: AccountRepository)(implicit val system: ActorSystem, executionContext: ExecutionContext)
   extends WithKafka {
 
-  def group = s"account-${repository.accountId}"
+  override def group = s"account-${repository.accountId}"
 
+  // создается консьюмер, который слушает все сообщения из топика AccountUpdate
   kafkaSource[AccountUpdate]
     .filter(command => repository.accountMap.contains(command.accountId)
       && repository.accountMap(command.accountId).amount + command.value >= 0)
@@ -25,33 +26,29 @@ class AccountStreams(repository: AccountRepository)(implicit val system: ActorSy
           AccountUpdated(
             accountId = command.accountId,
             value = command.value,
-            toId = command.toId//,
-//            category = command.category,
-//            tags = command.tags
+            toId = command.toId,
+            category = command.category
           )
         )
     }
     .to(kafkaSink)
     .run()
 
+  // создается консьюмер, который слушает все сообщения из топика AccountUpdated
   kafkaSource[AccountUpdated]
-    .filter(event => repository.accountMap.contains(event.accountId))
+    .filter(event => repository.accountMap.contains(event.accountId) && event.toId == None)
     .map { e =>
       println(s"Аккаунт ${e.accountId} обновлен на сумму ${e.value}. Баланс: ${repository.accountMap(e.accountId).amount}")
-      if (e.toId.nonEmpty) {
-        produceCommand(AccountUpdate(e.toId.get, -e.value, None))
-      } else {
-        println("Операция успешно завершена.")
-        e
-      }
+      println("Операция успешно завершена.")
+      e
     }
     .to(Sink.ignore)
     .run()
 
 //  kafkaSource[AccountUpdated]
-//    .filter(event => repository.account.id == event.accountId)
+//    .filter(event => repository.accountMap.contains(event.accountId))
 //    .map { e =>
-//      println(s"Аккаунт ${e.accountId} обновлен на сумму ${e.value}. Баланс: ${repository.account.amount}")
+//      println(s"Аккаунт ${e.accountId} обновлен на сумму ${e.value}. Баланс: ${repository.accountMap(e.accountId).amount}")
 //      e
 //    }
 //    .to(Sink.ignore)

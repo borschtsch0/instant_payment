@@ -11,4 +11,14 @@ import scala.concurrent.ExecutionContext
 class Streams()(implicit val system: ActorSystem, executionContext: ExecutionContext)
     extends WithKafka {
     override def group: String = "operation"
+
+  // создается консьюмер, который слушает все сообщения из топика AccountUpdated
+  kafkaSource[AccountUpdated]
+    .filter(event => event.toId.nonEmpty)
+    .map { e =>
+      println(s"Аккаунт ${e.accountId} обновлен на сумму ${e.value}.")
+      produceCommand(AccountUpdate(e.toId.get, -e.value, None))
+    }
+    .to(Sink.ignore)
+    .run()
 }
