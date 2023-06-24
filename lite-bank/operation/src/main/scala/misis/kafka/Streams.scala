@@ -12,7 +12,8 @@ class Streams()(implicit val system: ActorSystem, executionContext: ExecutionCon
     extends WithKafka {
     override def group: String = "operation"
 
-  // создается консьюмер, который слушает все сообщения из топика AccountUpdated
+  // создается консьюмер, который слушает сообщения из топика AccountUpdated,
+  // относящиеся ТОЛЬКО к трансферу
   kafkaSource[AccountUpdated]
     .filter(event => event.toId.nonEmpty)
     .map { e =>

@@ -11,13 +11,8 @@ class AccountRepository(val accountId: Int){
   val accountMap = mutable.Map[Int, Account]()
 
   def create(value: Int): Future[Account] = {
-    accountMap.contains(accountId) match {
-      case true => throw new AccountExists
-      case false =>
-        accountMap.put(accountId, Account(accountId, value))
-        println(s"Новый счет ${accountId} был успешно создан. Баланс: ${value}")
-        Future.successful(accountMap(accountId))
-    }
+    accountMap.put(accountId, Account(accountId, value))
+    Future.successful(accountMap(accountId))
   }
 
   def update(value: Int): Future[Account] = {
@@ -25,5 +20,3 @@ class AccountRepository(val accountId: Int){
     Future.successful(accountMap(accountId))
   }
 }
-
-case class AccountExists() extends Exception
