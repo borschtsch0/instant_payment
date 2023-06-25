@@ -55,6 +55,7 @@ class AccountStreams(repository: AccountRepository)(implicit val system: ActorSy
             accountId = command.accountId,
             value = command.value,
             toId = command.toId,
+            main_value = command.main_value,
             category = command.category
           )
         )

@@ -1,7 +1,7 @@
 package misis.repository
 
 import misis.kafka.FeeStreams
-import misis.model.UpdateFee
+import misis.model.{Account, AccountFeeCheck}
 
 import scala.collection.mutable
 import scala.concurrent.Future
@@ -29,15 +29,15 @@ class FeeRepository(){
   }
 
   // (Если не достигнут предел) обновить карту с накоплениями счетов
-  def updateFee(upd: UpdateFee) = {
-    feeMap.contains(upd.accountId) match {
+  def updateFee(accId: Int, value: Int) = {
+    feeMap.contains(accId) match {
       case true =>
-        val summa = feeMap(upd.accountId)
-        feeMap.put(upd.accountId, summa + upd.value)
+        val summa = feeMap(accId)
+        feeMap.put(accId, summa + value)
       case false =>
-        feeMap.put(upd.accountId, upd.value)
+        feeMap.put(accId, value)
     }
-    feeMap(upd.accountId)
+    feeMap(accId)
   }
 
 }

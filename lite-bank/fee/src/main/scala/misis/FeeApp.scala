@@ -20,6 +20,6 @@ object FeeApp extends App  {
     private val repository = new FeeRepository()
     private val streams = new FeeStreams(repository)
 
-    private val route = new FeeRoute()
+    private val route = new FeeRoute(repository, streams)
     Http().newServerAt("0.0.0.0", port).bind(route.routes)
 }

@@ -15,7 +15,7 @@ class Streams()(implicit val system: ActorSystem, executionContext: ExecutionCon
   // создается консьюмер, который слушает сообщения из топика AccountUpdated,
   // относящиеся ТОЛЬКО к трансферу
   kafkaSource[AccountUpdated]
-    .filter(event => event.toId.nonEmpty)
+    .filter(event => event.toId.nonEmpty && event.main_value.isEmpty)
     .map { e =>
       println(s"Аккаунт ${e.accountId} обновлен на сумму ${e.value}.")
       produceCommand(AccountUpdate(e.toId.get, -e.value, None))

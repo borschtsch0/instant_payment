@@ -5,7 +5,7 @@ POST localhost:8071/create/1/0
 POST localhost:8071/create/2/100
 
 ###
-POST localhost:8071/update/1/500
+POST localhost:8071/update/1/5000
 
 ###
 POST localhost:8071/update/2/234
@@ -18,4 +18,14 @@ Content-Type: application/json
   "sourceId": 1,
   "destinationId": 2,
   "value": 234
+}
+
+###
+POST localhost:8072/transfer
+Content-Type: application/json
+
+{
+  "sourceId": 1,
+  "destinationId": 2,
+  "value": 1501
 }

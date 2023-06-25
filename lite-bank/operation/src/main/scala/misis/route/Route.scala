@@ -15,7 +15,7 @@ import scala.util.{Failure, Success}
 
 class Route(streams: Streams, repository: Repository)(implicit ec: ExecutionContext) extends FailFastCirceSupport {
 
-    implicit val commandTopicName: TopicName[AccountUpdate] = streams.simpleTopicName[AccountUpdate]
+  implicit val commandTopicName: TopicName[AccountUpdate] = streams.simpleTopicName[AccountUpdate]
   implicit val createTopicName: TopicName[AccountCreate] = streams.simpleTopicName[AccountCreate]
 
     def routes =
