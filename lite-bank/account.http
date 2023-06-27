@@ -25,8 +25,8 @@ POST localhost:8071/transfer
 Content-Type: application/json
 
 {
-  "sourceId": 2,
-  "destinationId": 1,
+  "sourceId": 1,
+  "destinationId": 2,
   "value": 1501
 }
 

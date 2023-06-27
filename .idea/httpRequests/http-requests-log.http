@@ -6,6 +6,466 @@ User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
+  "sourceId": 1,
+  "destinationId": 2,
+  "value": 1501
+}
+
+<> 2023-06-27T134825.200.json
+
+###
+
+POST http://localhost:8071/transfer
+Content-Type: application/json
+Content-Length: 58
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "sourceId": 1,
+  "destinationId": 2,
+  "value": 1501
+}
+
+<> 2023-06-27T134822.200.json
+
+###
+
+POST http://localhost:8071/transfer
+Content-Type: application/json
+Content-Length: 58
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "sourceId": 1,
+  "destinationId": 2,
+  "value": 1501
+}
+
+<> 2023-06-27T134230.200.json
+
+###
+
+POST http://localhost:8071/transfer
+Content-Type: application/json
+Content-Length: 57
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "sourceId": 1,
+  "destinationId": 2,
+  "value": 234
+}
+
+<> 2023-06-27T134223.200.json
+
+###
+
+POST http://localhost:8071/update/2/234
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-27T134218.200.json
+
+###
+
+POST http://localhost:8071/update/1/5000
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-27T134217.200.json
+
+###
+
+POST http://localhost:8071/create/2/100
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-27T134210.200.json
+
+###
+
+POST http://localhost:8071/create/1/0
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-27T134209.200.json
+
+###
+
+POST http://localhost:8071/transfer
+Content-Type: application/json
+Content-Length: 58
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "sourceId": 1,
+  "destinationId": 2,
+  "value": 1501
+}
+
+<> 2023-06-27T133820.200.json
+
+###
+
+POST http://localhost:8071/transfer
+Content-Type: application/json
+Content-Length: 58
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "sourceId": 2,
+  "destinationId": 1,
+  "value": 1501
+}
+
+<> 2023-06-27T133704.200.json
+
+###
+
+POST http://localhost:8071/transfer
+Content-Type: application/json
+Content-Length: 58
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "sourceId": 2,
+  "destinationId": 1,
+  "value": 1501
+}
+
+<> 2023-06-27T133530.200.json
+
+###
+
+POST http://localhost:8071/transfer
+Content-Type: application/json
+Content-Length: 58
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "sourceId": 2,
+  "destinationId": 1,
+  "value": 1501
+}
+
+<> 2023-06-27T133319.200.json
+
+###
+
+POST http://localhost:8071/transfer
+Content-Type: application/json
+Content-Length: 58
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "sourceId": 1,
+  "destinationId": 2,
+  "value": 1501
+}
+
+<> 2023-06-27T131940.200.json
+
+###
+
+POST http://localhost:8071/transfer
+Content-Type: application/json
+Content-Length: 58
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "sourceId": 1,
+  "destinationId": 2,
+  "value": 1501
+}
+
+<> 2023-06-27T131239.200.json
+
+###
+
+POST http://localhost:8071/transfer
+Content-Type: application/json
+Content-Length: 58
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "sourceId": 1,
+  "destinationId": 2,
+  "value": 1501
+}
+
+<> 2023-06-27T130721.200.json
+
+###
+
+POST http://localhost:8071/transfer
+Content-Type: application/json
+Content-Length: 57
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "sourceId": 1,
+  "destinationId": 2,
+  "value": 234
+}
+
+<> 2023-06-27T130712.200.json
+
+###
+
+POST http://localhost:8071/update/2/234
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-27T130706.200.json
+
+###
+
+POST http://localhost:8071/update/1/5000
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-27T130705.200.json
+
+###
+
+POST http://localhost:8071/create/2/100
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-27T130659.200.json
+
+###
+
+POST http://localhost:8071/create/1/0
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-27T130657.200.json
+
+###
+
+POST http://localhost:8071/transfer
+Content-Type: application/json
+Content-Length: 58
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "sourceId": 2,
+  "destinationId": 1,
+  "value": 1501
+}
+
+<> 2023-06-27T125339.200.json
+
+###
+
+POST http://localhost:8071/transfer
+Content-Type: application/json
+Content-Length: 58
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "sourceId": 2,
+  "destinationId": 1,
+  "value": 1501
+}
+
+<> 2023-06-27T125117.200.json
+
+###
+
+POST http://localhost:8071/transfer
+Content-Type: application/json
+Content-Length: 58
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "sourceId": 1,
+  "destinationId": 2,
+  "value": 1501
+}
+
+<> 2023-06-27T125016.200.json
+
+###
+
+POST http://localhost:8071/transfer
+Content-Type: application/json
+Content-Length: 58
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "sourceId": 1,
+  "destinationId": 2,
+  "value": 1501
+}
+
+<> 2023-06-27T124925.200.json
+
+###
+
+POST http://localhost:8071/transfer
+Content-Type: application/json
+Content-Length: 58
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "sourceId": 2,
+  "destinationId": 1,
+  "value": 1501
+}
+
+<> 2023-06-27T124837.200.json
+
+###
+
+POST http://localhost:8071/transfer
+Content-Type: application/json
+Content-Length: 58
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "sourceId": 1,
+  "destinationId": 2,
+  "value": 1501
+}
+
+<> 2023-06-27T124747.200.json
+
+###
+
+POST http://localhost:8071/transfer
+Content-Type: application/json
+Content-Length: 58
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "sourceId": 1,
+  "destinationId": 2,
+  "value": 1501
+}
+
+<> 2023-06-27T124632.200.json
+
+###
+
+POST http://localhost:8071/transfer
+Content-Type: application/json
+Content-Length: 57
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "sourceId": 1,
+  "destinationId": 2,
+  "value": 234
+}
+
+<> 2023-06-27T124626.200.json
+
+###
+
+POST http://localhost:8071/update/2/234
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-27T124620.200.json
+
+###
+
+POST http://localhost:8071/update/1/5000
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-27T124619.200.json
+
+###
+
+POST http://localhost:8071/create/2/100
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-27T124615.200.json
+
+###
+
+POST http://localhost:8071/create/1/0
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-27T124613.200.json
+
+###
+
+POST http://localhost:8071/transfer
+Content-Type: application/json
+Content-Length: 58
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
   "sourceId": 2,
   "destinationId": 1,
   "value": 1501
@@ -252,407 +712,6 @@ User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 <> 2023-06-27T122420.200.json
-
-###
-
-POST http://localhost:8071/update/1/5000
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-06-27T122418.200.json
-
-###
-
-POST http://localhost:8071/create/2/100
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-06-27T122415.200.json
-
-###
-
-POST http://localhost:8071/create/1/0
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-06-27T122413.200.json
-
-###
-
-POST http://localhost:8071/transfer
-Content-Type: application/json
-Content-Length: 58
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "sourceId": 1,
-  "destinationId": 2,
-  "value": 1501
-}
-
-<> 2023-06-27T122246.200.json
-
-###
-
-POST http://localhost:8071/transfer
-Content-Type: application/json
-Content-Length: 58
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "sourceId": 1,
-  "destinationId": 2,
-  "value": 1501
-}
-
-<> 2023-06-27T122220.200.json
-
-###
-
-POST http://localhost:8071/transfer
-Content-Type: application/json
-Content-Length: 57
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "sourceId": 1,
-  "destinationId": 2,
-  "value": 234
-}
-
-<> 2023-06-27T122217.200.json
-
-###
-
-POST http://localhost:8071/update/2/234
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-06-27T122211.200.json
-
-###
-
-POST http://localhost:8071/update/1/5000
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-06-27T122210.200.json
-
-###
-
-POST http://localhost:8071/create/2/100
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-06-27T122202.200.json
-
-###
-
-POST http://localhost:8071/create/1/0
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-06-27T122201.200.json
-
-###
-
-POST http://localhost:8071/transfer
-Content-Type: application/json
-Content-Length: 58
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "sourceId": 1,
-  "destinationId": 2,
-  "value": 1501
-}
-
-<> 2023-06-27T121842.200.json
-
-###
-
-POST http://localhost:8071/transfer
-Content-Type: application/json
-Content-Length: 58
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "sourceId": 1,
-  "destinationId": 2,
-  "value": 1501
-}
-
-<> 2023-06-27T121728.200.json
-
-###
-
-POST http://localhost:8071/transfer
-Content-Type: application/json
-Content-Length: 57
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "sourceId": 1,
-  "destinationId": 2,
-  "value": 234
-}
-
-<> 2023-06-27T121658.200.json
-
-###
-
-POST http://localhost:8071/update/2/234
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-06-27T121652.200.json
-
-###
-
-POST http://localhost:8071/update/1/5000
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-06-27T121651.200.json
-
-###
-
-GET http://localhost:8071/balance/1
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-06-27T121645.200.json
-
-###
-
-POST http://localhost:8071/transfer
-Content-Type: application/json
-Content-Length: 57
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "sourceId": 1,
-  "destinationId": 2,
-  "value": 234
-}
-
-<> 2023-06-27T121607.200.json
-
-###
-
-POST http://localhost:8071/update/2/234
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-06-27T121606.200.json
-
-###
-
-POST http://localhost:8071/update/1/5000
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-06-27T121605.200.json
-
-###
-
-POST http://localhost:8071/create/2/100
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-06-27T121604.200.json
-
-###
-
-POST http://localhost:8071/create/1/0
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-06-27T121602.200.json
-
-###
-
-GET http://localhost:8071/balance/1
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-06-27T121316.200.json
-
-###
-
-POST http://localhost:8071/transfer
-Content-Type: application/json
-Content-Length: 58
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "sourceId": 1,
-  "destinationId": 2,
-  "value": 1501
-}
-
-<> 2023-06-27T121303.200.json
-
-###
-
-POST http://localhost:8071/transfer
-Content-Type: application/json
-Content-Length: 58
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "sourceId": 1,
-  "destinationId": 2,
-  "value": 1501
-}
-
-<> 2023-06-27T121133.200.json
-
-###
-
-GET http://localhost:8071/balance/1
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-06-27T121123.200.json
-
-###
-
-POST http://localhost:8071/transfer
-Content-Type: application/json
-Content-Length: 57
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "sourceId": 1,
-  "destinationId": 2,
-  "value": 234
-}
-
-<> 2023-06-27T121112.200.json
-
-###
-
-POST http://localhost:8071/update/2/234
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-06-27T121110.200.json
-
-###
-
-POST http://localhost:8071/update/1/5000
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-06-27T121108.200.json
-
-###
-
-POST http://localhost:8071/create/2/100
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-06-27T121104.200.json
-
-###
-
-POST http://localhost:8071/create/1/0
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-06-27T121102.200.json
-
-###
-
-POST http://localhost:8071/transfer
-Content-Type: application/json
-Content-Length: 58
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "sourceId": 1,
-  "destinationId": 2,
-  "value": 1501
-}
-
-<> 2023-06-27T120731.200.json
-
-###
-
-POST http://localhost:8071/transfer
-Content-Type: application/json
-Content-Length: 58
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "sourceId": 1,
-  "destinationId": 2,
-  "value": 1501
-}
-
-<> 2023-06-27T115849.200.json
 
 ###
 

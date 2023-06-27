@@ -13,12 +13,18 @@ class FeeRepository(){
 
   // Достигнут ли предел бесплатных переводов?
   // Если накопление счета не было создано, то оно создается
-  def isLimitReached(acc: Int): Boolean = {
-    feeMap(acc) >= limit
+  def isLimitReached(accId: Int, value: Int) = {
+    feeMap.contains(accId) match {
+      case true =>
+        feeMap(accId) >= limit
+      case false =>
+        feeMap.put(accId, value)
+        feeMap(accId) >= limit
+    }
   }
 
   // (Если предел достигнут) получить процент вычета комиссии
-  def getFeePercent(value: Int): Int = {
+  def getFeePercent(value: Int) = {
     value / 100 * percent
   }
 
@@ -29,8 +35,9 @@ class FeeRepository(){
         val summa = feeMap(accId)
         feeMap += (accId -> (summa + value))
       case false =>
-        feeMap + (accId -> value)
+        feeMap.put(accId, value)
     }
+    feeMap
   }
 
 }

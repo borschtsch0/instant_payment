@@ -58,7 +58,8 @@ class AccountStreams(repository: AccountRepository)(implicit val system: ActorSy
   kafkaSource[AccountUpdate]
     .filter(command =>
       repository.accountMap.contains(command.accountId)
-        && repository.accountMap(command.accountId).amount + command.value >= 0)
+        && repository.accountMap(command.accountId).amount + command.value >= 0
+    && command.value !=0)
     .mapAsync(1) { command =>
       repository
         .update(command.value)

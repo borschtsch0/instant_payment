@@ -1,11 +1,9 @@
 package misis.kafka
 
 import akka.actor.ActorSystem
-import akka.kafka.scaladsl.Producer
-import akka.stream.scaladsl.{Sink, Source}
 import io.circe.generic.auto._
 import io.circe.syntax._
-import misis.WithKafka
+import misis.{TopicName, WithKafka}
 import misis.model.{AccountUpdate, AccountUpdated}
 import misis.repository.FeeRepository
 
@@ -15,23 +13,24 @@ class FeeStreams(repository: FeeRepository)(implicit val system: ActorSystem, ex
     extends WithKafka {
     override def group: String = "fee"
 
+  implicit val commandTopicName: TopicName[AccountUpdate] = simpleTopicName[AccountUpdate]
+
   // Начисление комиссии
   kafkaSource[AccountUpdate]
     .filter(event =>
-      event.toId.nonEmpty)
+      event.toId.nonEmpty && event.fee.isEmpty)
     .map { e =>
-      repository.updateFee(e.accountId, e.value).map(_ =>
-        repository.isLimitReached(e.accountId) match {
-          case true =>
-            println(s"Для этой процедуры предусмотрена комиссия, которая составит ${repository.getFeePercent(e.value)} тугриков.")
-            produceCommand(AccountUpdate(e.accountId, -repository.getFeePercent(e.value), e.toId, Some(e.value), e.category))
-          case false =>
-            println("Для данной процедуры комиссия не предусмотрена.")
-            AccountUpdated(e.accountId, 0, e.toId, Some(e.value), e.category)
-        }
-      )
+      repository.updateFee(e.accountId, e.value)
+      repository.isLimitReached(e.accountId, e.value) match {
+        case true =>
+          println(s"Для этой процедуры предусмотрена комиссия, которая составит ${repository.getFeePercent(e.value)} тугриков.")
+          AccountUpdate(e.accountId, -repository.getFeePercent(e.value))
+        case false =>
+          println("Для данной процедуры комиссия не предусмотрена.")
+          AccountUpdate(e.accountId, 0)
+      }
     }
-    .to(Sink.ignore)
+    .to(kafkaSink)
     .run()
 }
 
