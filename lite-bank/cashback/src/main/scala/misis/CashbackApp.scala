@@ -12,13 +12,14 @@ import io.circe.parser._
 import io.circe.syntax._
 
 
-object OperationApp extends App  {
-    implicit val system: ActorSystem = ActorSystem("OperationApp")
+object CashbackApp extends App  {
+    implicit val system: ActorSystem = ActorSystem("MyApp")
     implicit val ec = system.dispatcher
+    val port = ConfigFactory.load().getInt("port")
 
-    private val streams = new Streams()
-    private val repository = new Repository(streams)
+    private val repository = new Repository()
+    private val streams = new Streams(repository)
 
-    private val route = new Route(streams, repository)
-    Http().newServerAt("0.0.0.0", 8071).bind(route.routes)
+    private val route = new Route()
+    Http().newServerAt("0.0.0.0", port).bind(route.routes)
 }

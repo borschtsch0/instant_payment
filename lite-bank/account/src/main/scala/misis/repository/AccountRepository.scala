@@ -15,6 +15,10 @@ class AccountRepository(val accountId: Int){
     Future.successful(accountMap(accountId))
   }
 
+  def getBalance(acc: Int) = {
+    accountMap(acc).amount
+  }
+
   def update(value: Int): Future[Account] = {
     accountMap.put(accountId, accountMap(accountId).update(value)) // обновление аккаунта
     Future.successful(accountMap(accountId))

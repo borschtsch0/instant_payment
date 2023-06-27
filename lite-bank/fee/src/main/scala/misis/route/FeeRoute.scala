@@ -6,7 +6,6 @@ import io.circe.generic.auto._
 import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport
 import misis.TopicName
 import misis.kafka.FeeStreams
-import misis.model.{AccountFeeCheck, AccountUpdate, Transfer}
 import misis.repository.FeeRepository
 
 import scala.concurrent.ExecutionContext
@@ -14,14 +13,14 @@ import scala.concurrent.ExecutionContext
 
 class FeeRoute(repository: FeeRepository, streams: FeeStreams)(implicit ec: ExecutionContext) extends FailFastCirceSupport {
 
-  implicit val commandTopicName: TopicName[AccountFeeCheck] = streams.simpleTopicName[AccountFeeCheck]
+//  implicit val commandTopicName: TopicName[AccountFeeCheck] = streams.simpleTopicName[AccountFeeCheck]
 
     def routes =
         (path("hello") & get) {
             complete("ok")
-        } ~
-          (path("transfer") & post & entity(as[Transfer])) { transfer =>
-            streams.produceCommand(AccountFeeCheck(transfer.sourceId, transfer.value, transfer.destinationId, transfer.category))
-            complete(transfer)
-          }
+        } //~
+//          (path("transfer") & post & entity(as[Transfer])) { transfer =>
+//            streams.produceCommand(AccountFeeCheck(transfer.sourceId, transfer.value, transfer.destinationId, transfer.category))
+//            complete(transfer)
+//          }
 }

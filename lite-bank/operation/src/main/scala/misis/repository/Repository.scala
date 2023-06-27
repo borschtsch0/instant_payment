@@ -12,20 +12,7 @@ class Repository(streams: Streams){
 
     def transfer(transfer: TransferStart) = {
         if (transfer.value > 0) {
-          streams.produceCommand(AccountUpdate(transfer.sourceId, -transfer.value, Some(transfer.destinationId)))
-
-          // получить событие? accountupdated
-
-//          streams.kafkaSource[AccountUpdated]
-//            .filter(event => event.accountId == transfer.sourceId)
-//            .map { event =>
-//              event.isDone match {
-//                case true => streams.produceCommand(AccountUpdate(transfer.destinationId, transfer.value))
-//                case _ => println("АХТУНГ! Операция не совершена.")
-//              }
-//            }.to(Sink.ignore)
-//            .run()
-
+          streams.produceCommand(AccountUpdate(transfer.sourceId, -transfer.value, Some(transfer.destinationId), None, transfer.category))
         }
     }
 }

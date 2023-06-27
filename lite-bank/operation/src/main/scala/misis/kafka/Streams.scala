@@ -15,10 +15,15 @@ class Streams()(implicit val system: ActorSystem, executionContext: ExecutionCon
   // создается консьюмер, который слушает сообщения из топика AccountUpdated,
   // относящиеся ТОЛЬКО к трансферу
   kafkaSource[AccountUpdated]
-    .filter(event => event.toId.nonEmpty && event.main_value.isEmpty)
+    .filter(event => event.toId.nonEmpty
+      && event.fee.nonEmpty)
     .map { e =>
-      println(s"Аккаунт ${e.accountId} обновлен на сумму ${e.value}.")
-      produceCommand(AccountUpdate(e.toId.get, -e.value, None))
+      println(s"C аккаунта ${e.accountId} было списано ${-e.value} тугриков.")
+      println("1 часть перевода осуществлена.")
+      if (e.fee.get == 0)
+        produceCommand(AccountUpdate(e.toId.get, -e.value))
+      else if (e.value < e.fee.get)
+        produceCommand(AccountUpdate(e.toId.get, -e.fee.get))
     }
     .to(Sink.ignore)
     .run()

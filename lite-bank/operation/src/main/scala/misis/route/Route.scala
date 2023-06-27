@@ -6,7 +6,7 @@ import io.circe.generic.auto._
 import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport
 import misis.TopicName
 import misis.kafka.Streams
-import misis.model.{AccountCreate, AccountUpdate, TransferStart}
+import misis.model.{AccountBalance, AccountCreate, AccountUpdate, TransferStart}
 import misis.repository.Repository
 
 import scala.concurrent.ExecutionContext
@@ -17,6 +17,7 @@ class Route(streams: Streams, repository: Repository)(implicit ec: ExecutionCont
 
   implicit val commandTopicName: TopicName[AccountUpdate] = streams.simpleTopicName[AccountUpdate]
   implicit val createTopicName: TopicName[AccountCreate] = streams.simpleTopicName[AccountCreate]
+  implicit val balanceTopicName: TopicName[AccountBalance] = streams.simpleTopicName[AccountBalance]
 
     def routes =
         (path("hello") & get) {
@@ -35,7 +36,12 @@ class Route(streams: Streams, repository: Repository)(implicit ec: ExecutionCont
             (path("transfer") & post & entity(as[TransferStart])) { transfer =>
                 repository.transfer(transfer)
                 complete(transfer)
-            }
+            } ~
+          path("balance" / IntNumber) { accountId =>
+            val command = AccountBalance(accountId)
+            streams.produceCommand(command)
+            complete(command)
+          }
 }
 
 

@@ -44,3 +44,8 @@ services:
       KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
     #networks:
     #  - misis-local
+
+  accounts:
+    image: accounts
+    ports:
+      - 9094:9094

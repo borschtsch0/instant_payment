@@ -21,11 +21,14 @@ Content-Type: application/json
 }
 
 ###
-POST localhost:8072/transfer
+POST localhost:8071/transfer
 Content-Type: application/json
 
 {
-  "sourceId": 1,
-  "destinationId": 2,
+  "sourceId": 2,
+  "destinationId": 1,
   "value": 1501
 }
+
+###
+GET localhost:8071/balance/1

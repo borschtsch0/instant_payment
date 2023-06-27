@@ -1,7 +1,7 @@
 package misis.repository
 
 import misis.kafka.FeeStreams
-import misis.model.{Account, AccountFeeCheck}
+import misis.model.{Account}
 
 import scala.collection.mutable
 import scala.concurrent.Future
@@ -14,13 +14,7 @@ class FeeRepository(){
   // Достигнут ли предел бесплатных переводов?
   // Если накопление счета не было создано, то оно создается
   def isLimitReached(acc: Int): Boolean = {
-    feeMap.contains(acc) match {
-      case true =>
-        feeMap(acc) >= limit
-      case false =>
-        feeMap.put(acc, 0)
-        feeMap(acc) >= limit
-    }
+    feeMap(acc) >= limit
   }
 
   // (Если предел достигнут) получить процент вычета комиссии
@@ -28,16 +22,15 @@ class FeeRepository(){
     value / 100 * percent
   }
 
-  // (Если не достигнут предел) обновить карту с накоплениями счетов
+  // обновить карту с накоплениями счетов
   def updateFee(accId: Int, value: Int) = {
     feeMap.contains(accId) match {
       case true =>
         val summa = feeMap(accId)
-        feeMap.put(accId, summa + value)
+        feeMap += (accId -> (summa + value))
       case false =>
-        feeMap.put(accId, value)
+        feeMap + (accId -> value)
     }
-    feeMap(accId)
   }
 
 }

@@ -15,11 +15,10 @@ import io.circe.syntax._
 object FeeApp extends App  {
     implicit val system: ActorSystem = ActorSystem("MyApp")
     implicit val ec = system.dispatcher
-    val port = ConfigFactory.load().getInt("port")
 
     private val repository = new FeeRepository()
     private val streams = new FeeStreams(repository)
 
     private val route = new FeeRoute(repository, streams)
-    Http().newServerAt("0.0.0.0", port).bind(route.routes)
+    Http().newServerAt("0.0.0.0", 8072).bind(route.routes)
 }
