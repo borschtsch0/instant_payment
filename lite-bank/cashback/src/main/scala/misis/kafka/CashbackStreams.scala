@@ -29,7 +29,7 @@ class CashbackStreams(repository: CashbackRepository)(implicit val system: Actor
     .to(Sink.ignore)
     .run()
 
-  // создается консьюмер, который слушает все сообщения из топика AccountUpdated
+  // создается консьюмер, который слушает все сообщения из топика GetCashback
   // и который будет обновлять кэшбеки отправителя денег
   kafkaSource[GetCashback]
     .filter(command => repository.cbAccountMap.contains(command.accountId)
