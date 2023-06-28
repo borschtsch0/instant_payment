@@ -21,6 +21,9 @@ Content-Type: application/json
 }
 
 ###
+GET localhost:8071/balance/1
+
+###
 POST localhost:8071/transfer
 Content-Type: application/json
 
@@ -31,4 +34,15 @@ Content-Type: application/json
 }
 
 ###
-GET localhost:8071/balance/1
+POST localhost:8071/transfer
+Content-Type: application/json
+
+{
+  "sourceId": 1,
+  "destinationId": 2,
+  "value": 1000,
+  "category": "gold"
+}
+
+###
+GET localhost:8071/get_cashback/1

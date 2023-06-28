@@ -1,13 +1,13 @@
 package misis.kafka
 
-import akka.NotUsed
 import akka.actor.ActorSystem
-import akka.stream.scaladsl.{Sink, Source}
+import akka.stream.scaladsl.Sink
 import io.circe.generic.auto._
 import misis.WithKafka
-import misis.model.{AccountBalance, AccountCreate, AccountCreated, AccountUpdate, AccountUpdated}
+import misis.model._
 import misis.repository.AccountRepository
 
+import java.time.Instant
 import scala.concurrent.ExecutionContext
 
 class AccountStreams(repository: AccountRepository)(implicit val system: ActorSystem, executionContext: ExecutionContext)
@@ -37,7 +37,7 @@ class AccountStreams(repository: AccountRepository)(implicit val system: ActorSy
     .filter(command => repository.accountMap.contains(command.accountId)
     )
     .map { e =>
-      println(s"Аккаунт ${e.accountId} создан. Баланс: ${repository.accountMap(e.accountId).amount}")
+      println(s"Счет ${e.accountId} создан. Баланс: ${repository.accountMap(e.accountId).amount}")
       println("Операция успешно завершена.")
       e
     }
@@ -50,7 +50,7 @@ class AccountStreams(repository: AccountRepository)(implicit val system: ActorSy
     )
     .map { command =>
       val res = repository.getBalance(command.accountId)
-      println(s"Баланс аккаунта ${command.accountId}: ${res}")
+      println(s"Баланс счета ${command.accountId}: ${res}")
     }.to(Sink.ignore)
     .run()
 
@@ -75,6 +75,7 @@ class AccountStreams(repository: AccountRepository)(implicit val system: ActorSy
     }
     .to(kafkaSink)
     .run()
+
   // создается консьюмер, который слушает все сообщения из топика AccountUpdated
   // относящиеся только к пополнению/уменьшению счета
   kafkaSource[AccountUpdated]
@@ -83,10 +84,22 @@ class AccountStreams(repository: AccountRepository)(implicit val system: ActorSy
         && repository.accountMap.contains(command.accountId)
     )
     .map { e =>
-      println(s"Аккаунт ${e.accountId} обновлен на сумму ${e.value}. Баланс: ${repository.accountMap(e.accountId).amount}")
+      println(s"Счет ${e.accountId} обновлен на сумму ${e.value}. Баланс: ${repository.accountMap(e.accountId).amount}")
       println("Операция успешно завершена.")
       e
     }
     .to(Sink.ignore)
+    .run()
+
+  // создается консьюмер, который слушает сообщения из топика TransferContinue
+  // где command.toId определен в системе
+  kafkaSource[TransferContinue]
+    .filter(command =>
+    repository.accountMap.contains(command.toId))
+    .map {e =>
+      println(s"Средства успешно сняты со счета ${e.fromId}.")
+      TransferDone(Instant.now(),e.fromId, e.toId, e.amount, e.category)
+    }
+    .to(kafkaSink)
     .run()
 }

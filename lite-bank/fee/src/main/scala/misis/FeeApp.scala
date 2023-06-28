@@ -4,7 +4,6 @@ import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import com.typesafe.config.ConfigFactory
 import misis.kafka.FeeStreams
-import misis.model.AccountUpdate
 import misis.repository.FeeRepository
 import misis.route.FeeRoute
 import io.circe.generic.auto._
